@@ -1,0 +1,22 @@
+Cocina con la precisión de un gran chef y olvídate de quemar alimentos o calcular tiempos de cabeza. KitchenFlow es el asistente de temporizadores culinarios encadenados por fases, diseñado para cocineros apasionados y amantes de la gastronomía.
+
+Los temporizadores convencionales solo miden un único bloque de tiempo. Pero las recetas reales exigen fases sucesivas e intervenciones intermedias: sellar la carne a fuego vivo antes de estofar, desglasar la sartén al minuto 4, remover el risotto cada 3 minutos o añadir hierbas frescas justo al final. KitchenFlow coordina cada etapa sin esfuerzo.
+
+CARACTERÍSTICAS PRINCIPALES:
+
+• TEMPORIZADORES ENCADENADOS POR FASES: Define fácilmente pasos de preparación, sofrito, cocción lenta, horneado y reposo. Cada fase avanza automáticamente a la siguiente con avisos claros visuales y sonoros.
+
+• AVISOS DE INTERVALO ANIDADOS: No vuelvas a olvidar remover, dar la vuelta o bañar los alimentos. Configura recordatorios intermedios periódicos o puntuales sin reiniciar el temporizador principal.
+
+• LIVE ACTIVITIES Y DYNAMIC ISLAND: Visualiza el tiempo restante, la fase activa y la próxima acción directamente en la pantalla de bloqueo de tu iPhone, en modo StandBy o en la Dynamic Island sin necesidad de entrar a la app.
+
+• COMPLEMENTO TOTAL PARA APPLE WATCH: Cocina con las manos libres. Recibe vibraciones hápticas exclusivas diseñadas con potencia suficiente para sentirse incluso con la campana extractora encendida.
+
+• MODO MANOS LIBRES POR VOZ: Cambia de fase, pausa el cronómetro o consulta el tiempo pendiente con comandos de voz sin manchar la pantalla con harina, agua o aceite.
+
+• PRIVACIDAD TOTAL Y SINCRONIZACIÓN ICLOUD: Tus recetas se guardan en local con SwiftData y se sincronizan entre tu iPhone y iPad mediante Apple CloudKit privado. Sin cuentas externas ni recopilación de datos personales.
+
+MODELO FREEMIUM HONESTO:
+Disfruta de KitchenFlow gratis con 1 receta personalizada activa y recetas gourmet de ejemplo con soporte completo de fases e intervalos. Desbloquea KitchenFlow Pro con un único pago para siempre (4,99 €) para disfrutar de recetas ilimitadas, complicaciones para el Apple Watch y sincronización con iCloud. Sin suscripciones ni cuotas recurrentes.
+
+Convierte cada receta en un éxito culinario. ¡Descarga KitchenFlow hoy mismo!

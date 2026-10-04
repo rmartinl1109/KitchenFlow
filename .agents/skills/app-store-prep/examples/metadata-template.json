@@ -1,0 +1,63 @@
+{
+  "app_info": {
+    "bundle_id": "com.example.app",
+    "primary_category": "Productivity",
+    "secondary_category": "Utilities",
+    "copyright": "2026 Developer Name"
+  },
+  "urls": {
+    "support_url": "https://example.com/#faq",
+    "marketing_url": "https://example.com",
+    "privacy_policy_url": "https://example.com/privacy.html"
+  },
+  "localizations": {
+    "en-US": {
+      "name": "AppName – Focus & Tasks",
+      "subtitle": "Streamline Your Daily Routine",
+      "promotional_text": "Special launch release! Experience effortless task management across all your Apple devices.",
+      "keywords": "task,planner,focus,todo,organizer,workflow,productivity,calendar",
+      "description": "Unlock your peak productivity with a native, ultra-responsive experience tailored for Apple hardware.\n\nKey Features:\n• Instant Sync: Seamless continuity between Mac, iPad, and iPhone via iCloud.\n• Hardware-grade Security: Your data is protected by Apple Keychain and on-device encryption.\n• Widget & Menu Bar: Keep your schedule within a single tap or glance.\n• 6 Native Languages: Fully translated and culturally adapted.\n\nDownload today and take complete control of your workflow.",
+      "release_notes": "Initial release: Welcome to the new standard in focus and task management."
+    },
+    "es-ES": {
+      "name": "AppName – Enfoque y Tareas",
+      "subtitle": "Optimiza Tu Rutina Diaria",
+      "promotional_text": "¡Lanzamiento oficial! Disfruta de una gestión de tareas fluida en todos tus dispositivos Apple.",
+      "keywords": "tareas,organizador,productividad,agenda,rutina,enfoque,calendario,habitos",
+      "description": "Maximiza tu productividad con una experiencia nativa y fluida, optimizada para el hardware de Apple.\n\nCaracterísticas principales:\n• Sincronización instantánea: Continuidad total entre Mac, iPad e iPhone vía iCloud.\n• Seguridad por hardware: Tus datos están protegidos con cifrado en el dispositivo.\n• Widgets y barra de menú: Tu planificación a un solo toque o vistazo.\n• 6 idiomas nativos: Totalmente adaptado y traducido.\n\nDescárgala hoy y toma el control de tu tiempo.",
+      "release_notes": "Versión inicial: Bienvenido a tu nuevo organizador nativo."
+    },
+    "fr-FR": {
+      "name": "AppName – Tâches & Focus",
+      "subtitle": "Optimisez Votre Quotidien",
+      "promotional_text": "Lancement officiel ! Une gestion de tâches fluide sur tous vos appareils Apple.",
+      "keywords": "taches,planificateur,focus,organisation,productivite,agenda,routine",
+      "description": "Atteignez votre productivité maximale avec une application native et réactive conçue pour Apple.\n\nPoints forts :\n• Synchronisation iCloud : Transition fluide entre Mac, iPad et iPhone.\n• Sécurité matérielle : Données chiffrées localement et protégées.\n• Widgets & barre de menu : Tout votre emploi du temps en un coup d'œil.\n• Support multi-langues : Conçu en 6 langues officielles.\n\nTéléchargez dès aujourd'hui.",
+      "release_notes": "Version initiale : Bienvenue dans votre nouvel outil de productivité."
+    },
+    "de-DE": {
+      "name": "AppName – Fokus & Planer",
+      "subtitle": "Optimiere Deinen Alltag",
+      "promotional_text": "Offizieller Start! Mühelose Aufgabenverwaltung auf allen deinen Apple-Geräten.",
+      "keywords": "aufgaben,planer,fokus,todo,produktivitat,kalender,zeitmanagement",
+      "description": "Steigere deine Produktivität mit einem nativen, extrem schnellen Erlebnis für Apple-Geräte.\n\nHauptfunktionen:\n• Sofortige iCloud-Synchronisation zwischen Mac, iPad und iPhone.\n• Maximale Sicherheit: Geschützt durch On-Device-Verschlüsselung.\n• Widgets & Menüleiste: Dein Tag auf einen Blick.\n• 6 native Sprachen: Vollständig lokalisiert.\n\nJetzt herunterladen und produktiver werden.",
+      "release_notes": "Erste Version: Willkommen zu deinem neuen nativen Planer."
+    },
+    "pt-BR": {
+      "name": "AppName – Foco e Tarefas",
+      "subtitle": "Otimize Sua Rotina Diária",
+      "promotional_text": "Lançamento oficial! Gerencie suas tarefas com facilidade em todos os aparelhos Apple.",
+      "keywords": "tarefas,planejador,foco,rotina,produtividade,agenda,calendario,habitos",
+      "description": "Eleve sua produtividade com uma experiência nativa projetada para o ecossistema Apple.\n\nRecursos Principais:\n• Sincronização Instantânea via iCloud entre Mac, iPad e iPhone.\n• Segurança de Ponta: Dados protegidos no próprio dispositivo.\n• Widgets e Barra de Menus: Sua rotina visível em um toque.\n• 6 Idiomas Nativos.\n\nBaixe hoje mesmo.",
+      "release_notes": "Versão inicial: Bem-vindo ao seu novo assistente de produtividade."
+    },
+    "zh-Hans": {
+      "name": "AppName – 专注与任务管理",
+      "subtitle": "让每日工作与生活井井有条",
+      "promotional_text": "全新发布！在所有 Apple 设备上享受极致流畅的原生任务管理体验。",
+      "keywords": "任务,清单,专注,效率,备忘录,日程,时间管理,计划",
+      "description": "专为 Apple 生态打造的原生高能效率工具，助您轻松掌控日常。\n\n核心亮点：\n• 即时同步：通过 iCloud 在 Mac、iPad 与 iPhone 之间顺畅流转。\n• 硬件级安全：采用设备端硬件加密与 Keychain 保护。\n• 小组件与菜单栏：重要日程随时一触即达。\n• 原生 6 国语言深度支持。\n\n立即下载，开启高效新生活。",
+      "release_notes": "初版发布：欢迎使用全新的原生专注任务管理工具。"
+    }
+  }
+}

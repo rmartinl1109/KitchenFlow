@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KitchenFlow — Smart Phased Recipe Timers & Cooking Assistant</title>
+  <meta name="description" content="Master multi-phase cooking with KitchenFlow. Chained recipe timers, nested interval alerts, Apple Watch haptics, and hands-free control for iPhone and iPad.">
+  
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            },
+            culinary: {
+              saffron: '#f59e0b',
+              flame: '#ea580c',
+              basil: '#16a34a'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"Inter"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    .floating-card {
+      animation: float 5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="h-full bg-stone-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans transition-colors duration-300 selection:bg-amber-500 selection:text-white">
+
+  <!-- Top Navigation Header -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-white/85 dark:bg-zinc-950/85 border-b border-zinc-200/80 dark:border-zinc-800/80 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center text-white shadow-lg shadow-amber-500/25 group-hover:scale-105 transition">
+          <i data-lucide="timer" class="w-5 h-5"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-zinc-900 to-zinc-700 dark:from-white dark:to-zinc-300 bg-clip-text text-transparent">KitchenFlow</span>
+          <span class="text-[10px] text-amber-600 dark:text-amber-400 font-semibold tracking-wider uppercase">Recipe Timers</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-zinc-600 dark:text-zinc-400">
+        <a href="#features" class="hover:text-amber-600 dark:hover:text-amber-400 transition">Features</a>
+        <a href="#demo" class="hover:text-amber-600 dark:hover:text-amber-400 transition">Live Demo</a>
+        <a href="#pricing" class="hover:text-amber-600 dark:hover:text-amber-400 transition">Freemium Tier</a>
+        <a href="#faq" class="hover:text-amber-600 dark:hover:text-amber-400 transition">FAQ</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center space-x-3">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" aria-label="Toggle theme" class="p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-amber-600 dark:hover:text-amber-400 transition">
+          <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+          <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+        </button>
+
+        <!-- CTA Download -->
+        <a href="https://apps.apple.com/app/id6819074326" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-semibold text-sm shadow-md shadow-amber-500/20 transition active:scale-95">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>App Store</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          
+          <!-- Badge -->
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-amber-500/20 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 text-xs font-semibold">
+            <span class="flex h-2 w-2 rounded-full bg-amber-500 animate-pulse"></span>
+            <span>Crafted for iOS 17+, iPadOS & watchOS</span>
+          </div>
+
+          <!-- Main Heading -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-zinc-900 dark:text-white">
+            Cook elaborate dishes with <span class="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 bg-clip-text text-transparent">zero stress</span> or burnt garlic.
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+            Traditional kitchen timers are messy and easy to mix up. KitchenFlow gives you <strong>chained sequential phases</strong>, <strong>nested interval reminders</strong>, and glanceable control on your Apple Watch or Dynamic Island.
+          </p>
+
+          <!-- Platforms -->
+          <div class="flex items-center justify-center lg:justify-start space-x-6 text-xs text-zinc-500 dark:text-zinc-400 font-medium pt-2">
+            <span class="flex items-center space-x-1.5"><i data-lucide="smartphone" class="w-4 h-4 text-amber-500"></i><span>iPhone</span></span>
+            <span class="flex items-center space-x-1.5"><i data-lucide="tablet" class="w-4 h-4 text-amber-500"></i><span>iPad</span></span>
+            <span class="flex items-center space-x-1.5"><i data-lucide="watch" class="w-4 h-4 text-amber-500"></i><span>Apple Watch</span></span>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-x-0 sm:space-x-4 space-y-3 sm:space-y-0 pt-4">
+            <a href="https://apps.apple.com/app/id6819074326" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-sm shadow-xl shadow-amber-500/25 transition active:scale-95 flex items-center justify-center space-x-2">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Download on App Store</span>
+            </a>
+            <a href="#demo" class="w-full sm:w-auto px-6 py-3.5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800/60 font-semibold text-sm transition flex items-center justify-center space-x-2">
+              <i data-lucide="play" class="w-4 h-4 text-amber-500"></i>
+              <span>Try Interactive Demo</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Hero Interactive Device Mockup -->
+        <div id="demo" class="lg:col-span-5 flex flex-col items-center justify-center relative">
+          
+          <!-- Screen Navigation Switcher -->
+          <div class="flex items-center space-x-1.5 p-1 rounded-xl bg-zinc-200/80 dark:bg-zinc-800/80 border border-zinc-300/60 dark:border-zinc-700/60 mb-4 text-xs font-semibold">
+            <button data-demo-nav="activeCooking" class="px-3 py-1.5 rounded-lg bg-amber-500 text-white shadow-md shadow-amber-500/20 transition">
+              Active Cooking
+            </button>
+            <button data-demo-nav="recipeList" class="px-3 py-1.5 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 transition">
+              Recipes
+            </button>
+            <button data-demo-nav="recipeEditor" class="px-3 py-1.5 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 transition">
+              Script Editor
+            </button>
+          </div>
+
+          <!-- Realistic iPhone Frame -->
+          <div class="relative w-[300px] h-[610px] rounded-[50px] bg-zinc-900 p-3 shadow-2xl ring-1 ring-zinc-800/50 shadow-amber-500/10">
+            <!-- Dynamic Island -->
+            <div class="absolute top-5 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-black rounded-full z-20 flex items-center justify-between px-2.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-zinc-900"></div>
+              <div class="flex items-center space-x-1">
+                <i data-lucide="timer" class="w-2.5 h-2.5 text-amber-400"></i>
+                <span class="text-[8px] font-mono text-white">02:25</span>
+              </div>
+            </div>
+
+            <!-- Screen Viewport -->
+            <div id="demo-viewport" class="w-full h-full rounded-[40px] bg-stone-50 dark:bg-zinc-950 p-4 pt-9 flex flex-col overflow-hidden text-zinc-900 dark:text-white transition-colors">
+              <!-- Rendered by app.js -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid Section -->
+  <section id="features" class="py-20 bg-white dark:bg-zinc-900/50 border-y border-zinc-200/80 dark:border-zinc-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Catering to Real Cooks</h2>
+        <h3 class="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-white tracking-tight">
+          Engineered for the heat and noise of the real kitchen.
+        </h3>
+        <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+          Everything from sequential stage timers to nested stirring reminders and watch haptics.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Card 1 -->
+        <div class="p-6 rounded-3xl bg-stone-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-4 hover:border-amber-500/40 transition">
+          <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
+            <i data-lucide="hourglass" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-bold text-lg text-zinc-900 dark:text-white">Sequential Chained Timers</h4>
+          <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Move seamlessly from sautéing to reducing and simmering. Timers transition automatically or hold until you confirm you're ready.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p-6 rounded-3xl bg-stone-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-4 hover:border-orange-500/40 transition">
+          <div class="w-12 h-12 rounded-2xl bg-orange-500/10 text-orange-500 flex items-center justify-center">
+            <i data-lucide="bell-ring" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-bold text-lg text-zinc-900 dark:text-white">Nested Interval Alerts</h4>
+          <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Need to stir risotto every 3 minutes during a 15-minute simmer? Nested alerts ping you without breaking your main timer workflow.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p-6 rounded-3xl bg-stone-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-4 hover:border-amber-500/40 transition">
+          <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
+            <i data-lucide="activity" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-bold text-lg text-zinc-900 dark:text-white">Live Activities & Island</h4>
+          <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Glance at remaining cooking time and next step previews directly from your Lock Screen or the Dynamic Island without unlocking your iPhone.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="p-6 rounded-3xl bg-stone-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-4 hover:border-red-500/40 transition">
+          <div class="w-12 h-12 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center">
+            <i data-lucide="watch" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-bold text-lg text-zinc-900 dark:text-white">Apple Watch Sensory Haptics</h4>
+          <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Kitchen extractor fans and boiling water are loud. Distinct wrist haptics ensure you never miss a step even in a noisy kitchen.
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="p-6 rounded-3xl bg-stone-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-4 hover:border-green-500/40 transition">
+          <div class="w-12 h-12 rounded-2xl bg-green-500/10 text-green-500 flex items-center justify-center">
+            <i data-lucide="hand" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-bold text-lg text-zinc-900 dark:text-white">Clean Screen Hands-Free</h4>
+          <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Keep your display clean when your hands are covered in dough or olive oil. Advance steps with voice commands or gesture pauses.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="p-6 rounded-3xl bg-stone-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-4 hover:border-blue-500/40 transition">
+          <div class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-500 flex items-center justify-center">
+            <i data-lucide="languages" class="w-6 h-6"></i>
+          </div>
+          <h4 class="font-bold text-lg text-zinc-900 dark:text-white">6 In-App Languages</h4>
+          <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Zero hardcoded strings. Localized seamlessly in English, Spanish, French, German, Portuguese, and Simplified Chinese.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing / Freemium Comparison Section -->
+  <section id="pricing" class="py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-3 mb-12">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Fair & Transparent</h2>
+        <h3 class="text-3xl font-black text-zinc-900 dark:text-white tracking-tight">
+          Cook freely or unlock kitchen mastery.
+        </h3>
+        <p class="text-sm text-zinc-600 dark:text-zinc-400">
+          We believe the core cooking engine should be accessible to everyone.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        
+        <!-- Free Tier Card -->
+        <div class="p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-zinc-400">Free Tier</span>
+            <div class="flex items-baseline space-x-1">
+              <span class="text-4xl font-black text-zinc-900 dark:text-white">$0</span>
+              <span class="text-xs text-zinc-500">/ forever</span>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400">
+              Perfect for everyday cooking with 1 active custom recipe at a time.
+            </p>
+            <ul class="space-y-3 text-xs text-zinc-700 dark:text-zinc-300 pt-2">
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i><span>1 Active Custom Recipe</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i><span>Sequential Chained Timers</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i><span><strong>Nested Interval Alerts</strong> (stirring, basting)</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i><span>Basic Live Activity support</span></li>
+            </ul>
+          </div>
+          <a href="#demo" class="w-full py-3 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white font-bold text-xs text-center hover:bg-zinc-200 transition">
+            Start Free
+          </a>
+        </div>
+
+        <!-- Pro Tier Card -->
+        <div class="p-8 rounded-3xl bg-gradient-to-b from-amber-500/10 to-orange-500/5 dark:from-amber-950/30 dark:to-zinc-900 border-2 border-amber-500 flex flex-col justify-between space-y-6 relative shadow-xl shadow-amber-500/10">
+          <div class="absolute -top-3 right-6 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white text-[10px] font-black uppercase tracking-wider shadow">
+            KitchenFlow Pro
+          </div>
+          <div class="space-y-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Master Cook</span>
+            <div class="flex items-baseline space-x-1">
+              <span class="text-4xl font-black text-zinc-900 dark:text-white">Pro</span>
+              <span class="text-xs text-zinc-500">Unlock All</span>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400">
+              For passionate food lovers, multi-course dinners, and wrist watch lovers.
+            </p>
+            <ul class="space-y-3 text-xs text-zinc-700 dark:text-zinc-300 pt-2">
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-amber-500"></i><span><strong>Unlimited</strong> Stored Recipes & Menus</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-amber-500"></i><span>Complete <strong>Apple Watch</strong> App & Complications</span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-amber-500"></i><span>Hands-Free <strong>Voice Commands</strong></span></li>
+              <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-amber-500"></i><span><strong>CloudKit</strong> Sync across iPhone & iPad</span></li>
+            </ul>
+          </div>
+          <a href="#demo" class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold text-xs text-center shadow-md hover:opacity-95 transition">
+            Upgrade to Pro
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-20 bg-white dark:bg-zinc-900/50 border-t border-zinc-200/80 dark:border-zinc-800/80">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="text-center space-y-3">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Got Questions?</h2>
+        <h3 class="text-3xl font-black text-zinc-900 dark:text-white tracking-tight">Frequently Asked Questions</h3>
+      </div>
+
+      <div class="space-y-4">
+        
+        <!-- FAQ 1 -->
+        <div class="p-5 rounded-2xl bg-stone-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+          <button class="faq-toggle w-full flex items-center justify-between text-left font-bold text-sm text-zinc-900 dark:text-white">
+            <span>What are nested interval alerts?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-500 transition-transform"></i>
+          </button>
+          <div class="hidden pt-3 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Nested alerts allow you to configure repetitive checks inside a longer step. For instance, if you are simmering tomato sauce for 30 minutes, you can set a nested alert every 5 minutes to stir the pot, without having to stop or recreate your overall timer.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="p-5 rounded-2xl bg-stone-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+          <button class="faq-toggle w-full flex items-center justify-between text-left font-bold text-sm text-zinc-900 dark:text-white">
+            <span>Are nested timers included in the free tier?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-500 transition-transform"></i>
+          </button>
+          <div class="hidden pt-3 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Yes! We want every cook to experience the full magic of KitchenFlow. The free version gives you complete access to both sequential and nested timers on your active recipe.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="p-5 rounded-2xl bg-stone-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+          <button class="faq-toggle w-full flex items-center justify-between text-left font-bold text-sm text-zinc-900 dark:text-white">
+            <span>Which Apple devices are supported?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-500 transition-transform"></i>
+          </button>
+          <div class="hidden pt-3 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            KitchenFlow is natively built for iOS 17+ (iPhone), iPadOS 17+ (iPad for counter stands), and watchOS 10+ (Apple Watch).
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-zinc-200 dark:border-zinc-800 text-center text-xs text-zinc-500 dark:text-zinc-400">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <span class="font-bold text-zinc-800 dark:text-zinc-200">KitchenFlow</span>
+        <span>— Smart Cooking Recipe Timers</span>
+      </div>
+      <p>© 2026 KitchenFlow. All rights reserved. Built natively with Swift & SwiftUI.</p>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

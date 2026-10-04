@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — KitchenFlow</title>
+  <meta name="description" content="Privacy Policy for KitchenFlow. We believe your culinary data belongs solely to you. Zero ad tracking, on-device SwiftData, and private iCloud sync.">
+  
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            },
+            culinary: {
+              saffron: '#f59e0b',
+              flame: '#ea580c',
+              basil: '#16a34a'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"Inter"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="h-full bg-stone-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans transition-colors duration-300 selection:bg-amber-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-white/85 dark:bg-zinc-950/85 border-b border-zinc-200/80 dark:border-zinc-800/80">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center text-white shadow-md shadow-amber-500/20">
+          <i data-lucide="timer" class="w-5 h-5"></i>
+        </div>
+        <span class="font-bold text-xl tracking-tight">Kitchen<span class="text-amber-500">Flow</span></span>
+      </a>
+      
+      <a href="index.html" class="text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-amber-600 flex items-center gap-1">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-12 lg:py-16">
+    <div class="space-y-8">
+      
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-400 mb-3">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+          Apple Privacy Standards Compliant
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Privacy Policy</h1>
+        <p class="mt-2 text-sm text-zinc-500 dark:text-zinc-400">Effective Date: October 4, 2026 • Version 1.0</p>
+      </div>
+
+      <div class="prose dark:prose-invert max-w-none text-zinc-600 dark:text-zinc-300 space-y-6 text-base leading-relaxed">
+        
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-zinc-900 dark:text-zinc-100">1. Core Philosophy: Privacy by Design</h2>
+          <p>
+            At KitchenFlow, we believe your personal recipes, cooking habits, and kitchen workflows belong exclusively to you. KitchenFlow was engineered from the ground up using Apple's modern on-device SwiftData architecture. We do not sell your personal data, we do not track you across third-party websites or applications, and we do not host external tracking databases.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-zinc-900 dark:text-zinc-100">2. Data We Do Not Collect</h2>
+          <ul class="list-disc list-inside space-y-1.5 pl-2">
+            <li><strong>No Personal Identity:</strong> We do not ask for or store your name, email address, phone number, or physical address.</li>
+            <li><strong>No Audio or Voice Storage:</strong> Hands-Free Voice Control processes commands locally on-device using Apple Speech and On-Device Siri Intents. No audio recordings or voice transcripts are ever transmitted to or stored on third-party servers.</li>
+            <li><strong>No Third-Party Ad Trackers:</strong> The application contains zero advertising SDKs or data brokers.</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-zinc-900 dark:text-zinc-100">3. Data Storage & iCloud Sync</h2>
+          <p>
+            Your recipes, timers, interval alerts, and cooking logs are stored locally on your device via SwiftData. If you enable iCloud sync (available in KitchenFlow Pro), your data is securely synchronized across your own Apple devices using your private Apple iCloud container (CloudKit). This data is encrypted end-to-end and is accessible only by your Apple ID. KitchenFlow developers have no access to your iCloud data.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-zinc-900 dark:text-zinc-100">4. Purchases & StoreKit 2</h2>
+          <p>
+            In-app purchase transactions for KitchenFlow Pro ($4.99 one-time purchase) are processed directly by Apple through StoreKit 2. We never handle or receive your payment card numbers, billing addresses, or financial data. Apple securely manages purchase verification and family sharing according to their privacy standards.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-zinc-900 dark:text-zinc-100">5. Contact Information</h2>
+          <p>
+            If you have questions about this Privacy Policy or KitchenFlow's privacy practices, please contact us at:
+            <a href="mailto:privacy@kitchenflow.app" class="text-amber-600 dark:text-amber-400 font-semibold underline">privacy@kitchenflow.app</a>.
+          </p>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-zinc-200 dark:border-zinc-800 py-8 text-center text-xs text-zinc-500">
+    <p>© 2026 KitchenFlow. All rights reserved. Designed for iOS, iPadOS & watchOS.</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

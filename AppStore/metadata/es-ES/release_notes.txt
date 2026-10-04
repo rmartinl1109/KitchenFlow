@@ -1,0 +1,6 @@
+¡Bienvenido a KitchenFlow 1.0!
+• Temporizadores encadenados por fases para recetas complejas.
+• Avisos de intervalo anidados para remover, hidratar o dar la vuelta.
+• Soporte completo de Live Activities y Dynamic Island en iOS.
+• Localización nativa completa en 6 idiomas.
+• KitchenFlow Pro disponible con recetas ilimitadas y app Apple Watch.

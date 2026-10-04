@@ -1,0 +1,1 @@
+cocina,temporizador,recetas,reloj,horno,avisos,alerta,chef,comida,liveactivity,watch,guiso,postre

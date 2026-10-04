@@ -1,0 +1,22 @@
+Stop burning food and guessing cooking steps. KitchenFlow is the precision culinary timing companion built specifically for passionate home cooks and professional chefs.
+
+Traditional kitchen timers only measure a single block of time. Real recipes, however, have consecutive phases and intermediate actions: searing meat before lowering the heat, deglazing the pan at minute 4, stirring the risotto every 3 minutes, or adding aromatic herbs right before the finish. KitchenFlow coordinates every step effortlessly.
+
+KEY FEATURES:
+
+• CHAINED PHASE TIMERS: Seamlessly sequence preparation, searing, simmering, resting, and baking. Each step automatically transitions to the next with clear acoustic and visual cues.
+
+• NESTED INTERVAL ALERTS: Never forget to stir, baste, flip, or taste mid-step. Set intermediate recurring or scheduled reminders without resetting your main timer.
+
+• LIVE ACTIVITIES & DYNAMIC ISLAND: Track your active recipe and current phase at a glance from your iPhone Lock Screen, StandBy mode, or Dynamic Island without opening the app.
+
+• COMPLETE APPLE WATCH COMPANION: Keep your hands free while cooking. Feel distinctive haptic taps tailored to pierce through noisy kitchen hoods and bubbling pans.
+
+• HANDS-FREE VOICE CONTROL: Advance phases, pause timers, or query remaining time with your voice when your fingers are covered in flour or olive oil.
+
+• PRIVACY-FIRST & ICLOUD SYNC: Your recipe collection is stored locally with SwiftData and seamlessly synced across iPhone and iPad using private Apple CloudKit. No accounts, no data harvesting.
+
+FREEMIUM TRANSPARENCY:
+Enjoy KitchenFlow with 1 custom active recipe and preloaded gourmet recipes. Unlock KitchenFlow Pro with a single one-time purchase ($4.99) for lifetime access to unlimited recipes, Apple Watch complication integration, and iCloud multi-device synchronization. No recurring subscriptions.
+
+Cook with absolute precision and culinary flow. Download KitchenFlow today!

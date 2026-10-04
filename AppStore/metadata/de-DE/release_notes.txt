@@ -1,0 +1,6 @@
+Willkommen bei KitchenFlow 1.0!
+• Verkettete Phasen-Timer für komplexe Gourmet-Rezepte.
+• Eingebettete Intervall-Alarme zum Umrühren und Wenden.
+• Live Activities und Dynamic Island Unterstützung.
+• Vollständige Lokalisierung in 6 Sprachen.
+• KitchenFlow Pro für unbegrenzte Rezepte und Apple Watch Integration.

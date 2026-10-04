@@ -1,0 +1,45 @@
+# Xcode
+## User settings
+xcuserdata/
+*.xcuserdatad
+*.xcuserstate
+*.xcscmblueprint
+
+## Build generated
+build/
+DerivedData/
+*.moved-aside
+*.xccheckout
+*.spotlight
+*.orig
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Package Manager
+.build/
+Packages/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/test_output
+
+# Temp & Cache
+*.swp
+*.bak
+*~
+.temp/
+scratch/

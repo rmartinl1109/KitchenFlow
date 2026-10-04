@@ -1,0 +1,22 @@
+Ne brûlez plus vos plats et ne cuisinez plus au hasard. KitchenFlow est le compagnon de cuisine par étapes conçu spécialement pour les cuisiniers passionnés et les amateurs de gastronomie.
+
+Les minuteurs traditionnels ne mesurent qu'un seul bloc de temps. Or, les vraies recettes comportent des phases successives et des actions intermédiaires : saisir la viande avant de la faire mijoter, déglacer à la 4e minute, remuer le risotto toutes les 3 minutes ou ajouter des herbes fraîches à la toute fin. KitchenFlow coordonne chaque étape sans effort.
+
+FONCTIONNALITÉS CLÉS :
+
+• MINUTEURS PAR ÉTAPES ENCHAÎNÉES : Séquencez préparation, saisie, mijotage, repos et cuisson au four. Chaque étape s'enchaîne automatiquement avec des alertes sonores et visuelles claires.
+
+• RAPPELS D'INTERVALLES IMBRIQUÉS : N'oubliez plus de remuer, retourner ou arroser vos préparations au milieu d'une étape sans réinitialiser votre minuteur principal.
+
+• LIVE ACTIVITIES & DYNAMIC ISLAND : Suivez le temps restant, l'étape en cours et la prochaine action directement sur l'écran verrouillé de votre iPhone, en mode En veille ou dans la Dynamic Island.
+
+• APPLICATION COMPAGNON APPLE WATCH : Cuisinez les mains libres. Profitez de retours haptiques distinctifs spécialement calibrés pour être ressentis même avec une hotte aspirante en marche.
+
+• COMMANDE VOCALE MAINS LIBRES : Avancez les étapes, mettez en pause ou consultez le temps restant à la voix lorsque vos doigts sont couverts de farine ou d'huile.
+
+• RESPECT DE LA VIE PRIVÉE & SYNC ICLOUD : Vos recettes sont conservées localement avec SwiftData et synchronisées en toute sécurité entre vos appareils via Apple CloudKit. Aucune création de compte requise.
+
+MODÈLE FREEMIUM TRANSPARENT :
+Profitez gratuitement de KitchenFlow avec 1 recette personnalisée active et des recettes préchargées. Débloquez KitchenFlow Pro avec un achat unique à vie (4,99 €) pour accéder aux recettes illimitées, aux complications Apple Watch et à la synchronisation iCloud. Aucun abonnement récurrent.
+
+Cuisinez avec une précision de chef. Téléchargez KitchenFlow dès aujourd'hui !

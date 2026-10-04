@@ -1,0 +1,6 @@
+Bem-vindo ao KitchenFlow 1.0!
+• Timers encadeados por etapas para receitas gastronômicas.
+• Alertas de intervalo aninhados para mexer ou regar alimentos.
+• Suporte a Live Activities e Dynamic Island no iOS.
+• Tradução nativa completa nos 6 idiomas oficiais.
+• KitchenFlow Pro com receitas ilimitadas e app Apple Watch.

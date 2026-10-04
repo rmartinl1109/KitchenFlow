@@ -1,0 +1,6 @@
+Bienvenue sur KitchenFlow 1.0 !
+• Minuteurs enchaînés par étapes pour recettes complexes.
+• Alertes d'intervalles imbriquées pour remuer ou retourner.
+• Support des Live Activities et de la Dynamic Island.
+• Traduction complète dans les 6 langues officielles.
+• KitchenFlow Pro avec recettes illimitées et app Apple Watch.

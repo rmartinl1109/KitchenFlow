@@ -1,0 +1,6 @@
+Welcome to KitchenFlow 1.0!
+• Chained recipe phase timers with automated transitions.
+• Nested interval alerts to stir, flip, or baste mid-cooking.
+• Real-time Live Activities and Dynamic Island support.
+• Full localization in 6 languages.
+• KitchenFlow Pro option with unlimited recipes and Apple Watch companion.

@@ -1,0 +1,6 @@
+欢迎使用 KitchenFlow 1.0！
+• 多阶段连续烹饪计时器与自动流转机制。
+• 阶段内嵌套翻面、搅拌与补水等间隔提醒。
+• 全面支持 iOS 实时活动（Live Activities）与灵动岛。
+• 严谨支持 6 种官方语言的原生本地化。
+• KitchenFlow Pro 解锁无限食谱保存及 Apple Watch 专属协同。
