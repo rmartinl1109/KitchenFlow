@@ -5,6 +5,37 @@ import SwiftData
 struct MyApp: App {
     @AppStorage("appAppearance") private var appAppearance: String = "system"
     
+    let container: ModelContainer
+    
+    init() {
+        let schema = Schema([
+            Recipe.self,
+            RecipeStep.self,
+            StepIntervalAlert.self
+        ])
+        
+        do {
+            let config = ModelConfiguration(
+                schema: schema,
+                isStoredInMemoryOnly: false,
+                cloudKitDatabase: .automatic
+            )
+            container = try ModelContainer(for: schema, configurations: [config])
+        } catch {
+            print("KitchenFlow: Sincronización CloudKit no disponible (\(error.localizedDescription)). Inicializando contenedor SwiftData local de respaldo.")
+            do {
+                let localConfig = ModelConfiguration(
+                    schema: schema,
+                    isStoredInMemoryOnly: false,
+                    cloudKitDatabase: .none
+                )
+                container = try ModelContainer(for: schema, configurations: [localConfig])
+            } catch {
+                fatalError("KitchenFlow: Fallo crítico al inicializar SwiftData ModelContainer: \(error)")
+            }
+        }
+    }
+    
     private var selectedColorScheme: ColorScheme? {
         switch appAppearance {
         case "light":
@@ -21,10 +52,6 @@ struct MyApp: App {
             ContentView()
                 .preferredColorScheme(selectedColorScheme)
         }
-        .modelContainer(for: [
-            Recipe.self,
-            RecipeStep.self,
-            StepIntervalAlert.self
-        ])
+        .modelContainer(container)
     }
 }

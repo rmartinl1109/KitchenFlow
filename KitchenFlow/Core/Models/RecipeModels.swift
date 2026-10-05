@@ -5,45 +5,52 @@ import SwiftData
 /// Ejemplo: "Remover sofrito cada 5 minutos".
 @Model
 final class StepIntervalAlert {
-    var id: UUID
-    var intervalSeconds: Int
-    var message: String
-    var soundEnabled: Bool
+    var id: UUID = UUID()
+    var intervalSeconds: Int = 0
+    var message: String = ""
+    var soundEnabled: Bool = true
+    
+    var step: RecipeStep?
     
     init(
         id: UUID = UUID(),
-        intervalSeconds: Int,
-        message: String,
-        soundEnabled: Bool = true
+        intervalSeconds: Int = 0,
+        message: String = "",
+        soundEnabled: Bool = true,
+        step: RecipeStep? = nil
     ) {
         self.id = id
         self.intervalSeconds = intervalSeconds
         self.message = message
         self.soundEnabled = soundEnabled
+        self.step = step
     }
 }
 
 /// Paso individual de una receta culinaria con duración y alertas anidadas opcionales.
 @Model
 final class RecipeStep {
-    var id: UUID
-    var stepOrder: Int
-    var title: String
-    var instructions: String
-    var durationSeconds: Int
-    var requiresManualConfirmation: Bool
+    var id: UUID = UUID()
+    var stepOrder: Int = 0
+    var title: String = ""
+    var instructions: String = ""
+    var durationSeconds: Int = 0
+    var requiresManualConfirmation: Bool = false
     
-    @Relationship(deleteRule: .cascade)
+    var recipe: Recipe?
+    
+    @Relationship(deleteRule: .cascade, inverse: \StepIntervalAlert.step)
     var intervalAlerts: [StepIntervalAlert] = []
     
     init(
         id: UUID = UUID(),
-        stepOrder: Int,
-        title: String,
+        stepOrder: Int = 0,
+        title: String = "",
         instructions: String = "",
-        durationSeconds: Int,
+        durationSeconds: Int = 0,
         requiresManualConfirmation: Bool = false,
-        intervalAlerts: [StepIntervalAlert] = []
+        intervalAlerts: [StepIntervalAlert] = [],
+        recipe: Recipe? = nil
     ) {
         self.id = id
         self.stepOrder = stepOrder
@@ -52,20 +59,21 @@ final class RecipeStep {
         self.durationSeconds = durationSeconds
         self.requiresManualConfirmation = requiresManualConfirmation
         self.intervalAlerts = intervalAlerts
+        self.recipe = recipe
     }
 }
 
 /// Modelo principal de una receta culinaria en KitchenFlow.
 @Model
 final class Recipe {
-    var id: UUID
-    var title: String
-    var recipeDescription: String
-    var iconEmoji: String
-    var createdAt: Date
-    var isDefaultSample: Bool
+    var id: UUID = UUID()
+    var title: String = ""
+    var recipeDescription: String = ""
+    var iconEmoji: String = "🥘"
+    var createdAt: Date = Date()
+    var isDefaultSample: Bool = false
     
-    @Relationship(deleteRule: .cascade)
+    @Relationship(deleteRule: .cascade, inverse: \RecipeStep.recipe)
     var steps: [RecipeStep] = []
     
     var totalDurationSeconds: Int {
@@ -86,7 +94,7 @@ final class Recipe {
     
     init(
         id: UUID = UUID(),
-        title: String,
+        title: String = "",
         recipeDescription: String = "",
         iconEmoji: String = "🥘",
         createdAt: Date = Date(),

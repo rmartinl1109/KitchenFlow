@@ -156,7 +156,7 @@ KitchenFlow/
 - [x] Aplicación de reglas Freemium: límite de 1 receta propia en el plan gratuito con activación automática del Paywall.
 - [x] Páginas públicas de cumplimiento normativo de Apple: [Política de Privacidad](file:///Users/roberto/Developer/KitchenFlow/web/privacy.html) y [Términos de Uso / EULA](file:///Users/roberto/Developer/KitchenFlow/web/terms.html) en `/web`.
 - [x] Preparación y validación exhaustiva de metadatos ASO para App Store Connect en los **6 idiomas oficiales** (`en-US`, `es-ES`, `fr-FR`, `de-DE`, `pt-BR`, `zh-Hans`) según la skill `app-store-prep`.
-- [ ] Sincronización multi-dispositivo con `NSPersistentCloudKitContainer` / SwiftData CloudKit.
+- [x] Sincronización multi-dispositivo con **SwiftData CloudKit** (`ModelConfiguration` con `cloudKitDatabase: .automatic` y arquitectura de fallback resiliente local).
 
 ---
 
@@ -188,6 +188,13 @@ KitchenFlow cumple estrictamente la política de **cero cadenas hardcodeadas**. 
 ---
 
 ## 📝 Historial de Actualizaciones Recientes
+
+- **2026-10-05**:
+  - **Sincronización multi-dispositivo con SwiftData CloudKit**:
+    - **Blindaje del esquema de modelos**: [RecipeModels.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Core/Models/RecipeModels.swift) adaptado a los requisitos estrictos de CloudKit con valores por defecto en todas las propiedades y relaciones inversas explícitas (`inverse: \RecipeStep.recipe`, `inverse: \StepIntervalAlert.step`).
+    - **Contenedor SwiftData resiliente con fallback**: En [MyApp.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/MyApp.swift), inicialización de `ModelContainer` con `cloudKitDatabase: .automatic` para sincronización silenciosa entre dispositivos del usuario mediante iCloud privada, con captura y fallback automático a almacenamiento local (`.none`) en caso de entornos sin red o cuentas restringidas.
+    - **Entitlements y capacidades de iCloud**: Creado [KitchenFlow.entitlements](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/KitchenFlow.entitlements) con `iCloud.com.rmartinl1109.KitchenFlow` y CloudKit habilitado, junto con `remote-notification` en `UIBackgroundModes` para recepción de sincronizaciones en segundo plano.
+    - **Compilación verificada**: Targets de iOS y watchOS compilados con éxito en Xcode sin advertencias de esquema.
 
 - **2026-10-04**:
   - **Configuración de Identificadores Oficiales de App Store Connect**:
