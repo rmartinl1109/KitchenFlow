@@ -83,7 +83,7 @@ final class LiveActivityManager {
         
         let content = ActivityContent(state: updatedState, staleDate: nil)
         
-        Task {
+        Task { @MainActor in
             await activity.update(content)
         }
     }
@@ -94,7 +94,7 @@ final class LiveActivityManager {
         
         let dismissalPolicy: ActivityUIDismissalPolicy = immediate ? .immediate : .default
         
-        Task {
+        Task { @MainActor in
             await activity.end(nil, dismissalPolicy: dismissalPolicy)
         }
         

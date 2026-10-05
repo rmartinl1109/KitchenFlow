@@ -150,10 +150,10 @@ struct SettingsView: View {
         Section("settings.section.support_community") {
             // Valorar en App Store
             Button {
-                if UIApplication.shared.canOpenURL(KitchenFlowAppStoreConfig.writeReviewURL) {
-                    UIApplication.shared.open(KitchenFlowAppStoreConfig.writeReviewURL)
-                } else {
-                    requestReview()
+                UIApplication.shared.open(KitchenFlowAppStoreConfig.writeReviewURL) { success in
+                    if !success {
+                        requestReview()
+                    }
                 }
             } label: {
                 Label {

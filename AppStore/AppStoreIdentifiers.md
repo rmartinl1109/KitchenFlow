@@ -13,6 +13,7 @@ Este documento registra los identificadores oficiales del proyecto en Apple Deve
 | **Bundle Display Name** | `KitchenFlow` | Nombre visible bajo el icono en iOS / watchOS (`CFBundleDisplayName`) |
 | **Bundle Identifier (App)** | `com.rmartinl1109.KitchenFlow` | Target principal iOS / iPadOS / macOS |
 | **Bundle Identifier (Widget)** | `com.rmartinl1109.KitchenFlow.KitchenFlowWidget` | Target de Dynamic Island & Live Activities |
+| **Bundle Identifier (Watch)** | `com.rmartinl1109.KitchenFlow.watchkitapp` | Target Apple Watch (watchOS 10+) |
 | **Apple ID (App Store)** | `6819074326` | Identificador único en App Store Connect |
 | **Team ID** | `767589BL4D` | Cuenta de desarrollador Apple |
 

@@ -33,6 +33,7 @@ Al cocinar platos elaborados con múltiples fases (por ejemplo: sofreír 5 min, 
 - **Nombre de registro interno**: `KitchenFlowRecipes`
 - **Bundle ID (App)**: `com.rmartinl1109.KitchenFlow`
 - **Bundle ID (Widget)**: `com.rmartinl1109.KitchenFlow.KitchenFlowWidget`
+- **Bundle ID (Watch)**: `com.rmartinl1109.KitchenFlow.watchkitapp`
 - **Apple ID (App Store)**: `6819074326`
 - **IAP Product ID**: `com.rmartinl1109.KitchenFlowPro` (KitchenFlow Pro Lifetime)
 - **IAP Apple ID**: `6819074505`
@@ -137,11 +138,12 @@ KitchenFlow/
   - Dynamic Island (Compact Leading con emoji y paso, Compact Trailing con cuenta regresiva, Minimal y Expanded con vista detallada de la receta y recordatorios).
 - [x] Sistema de notificaciones locales ricas (`NotificationService`) con categorías interactivas y avisos sonoros para finalización de fase y recordatorios de intervalo.
 
-### Fase 3: Ecosistema Apple Watch & Experiencia Sensorial ⌚ *(Siguiente fase)*
-- [ ] Target nativo `KitchenFlowWatch` en watchOS 10+.
-- [ ] Sincronización en tiempo real mediante `WatchConnectivity` y actualización de fondo.
-- [ ] Diseño de patrones hápticos distintivos (`WKHapticType` personalizado) para alertar al cocinero en entornos de ruido o extracción de humos.
-- [ ] Complicaciones para esferas de reloj que muestran el paso actual y cuenta regresiva.
+### Fase 3: Ecosistema Apple Watch & Experiencia Sensorial ⌚ *(Completada)*
+- [x] Target nativo `KitchenFlowWatch` en watchOS 10+.
+- [x] Sincronización en tiempo real y segundo plano mediante `WatchConnectivity` (`WCSession`).
+- [x] Diseño de patrones hápticos distintivos (`WatchHapticsManager` con `WKInterfaceDevice`) para alertar al cocinero en entornos de ruido o extracción de humos.
+- [x] Interfaz SwiftUI inmersiva (`WatchCookingView`) con anillo circular gastronómico, botón táctil grande y gestión de intervalos.
+- [x] Complicaciones de esfera con `WidgetKit` (`accessoryCircular`, `accessoryCorner`, `accessoryRectangular`, `accessoryInline`).
 
 ### Fase 4: Modo Manos Libres y Accesibilidad de Cocina 🗣️
 - [ ] Integración con `Speech` y comandos por voz sin contacto físico ("*Siguiente paso*", "*Pausar*", "*¿Cuánto falta?*").

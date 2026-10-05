@@ -13,7 +13,7 @@ enum CookingSessionState: Equatable {
 }
 
 /// Motor de ejecución en tiempo real de flujos de tiempo culinarios.
-/// Gestiona temporizadores secuenciales, avisos anidados, Live Activities y notificaciones.
+/// Gestiona temporizadores secuenciales, avisos anidados, Live Activities, Apple Watch y notificaciones.
 @MainActor
 @Observable
 final class CookingTimerEngine {
@@ -31,6 +31,34 @@ final class CookingTimerEngine {
     
     // MARK: - Control Interno del Timer
     private var internalTimer: Timer?
+    
+    // MARK: - Ciclo de Vida e Integración Watch
+    init() {
+        setupWatchConnectivityBindings()
+    }
+    
+    private func setupWatchConnectivityBindings() {
+        WatchConnectivityService.shared.onCommandReceived = { [weak self] command in
+            guard let self = self else { return }
+            switch command {
+            case .pause:
+                self.pause()
+            case .resume:
+                self.resume()
+            case .nextStep:
+                self.skipToNextStep()
+            case .dismissInterval:
+                self.dismissIntervalAlert()
+            case .requestSync:
+                self.syncExternalDisplays()
+            }
+        }
+        
+        WatchConnectivityService.shared.onSyncRequested = { [weak self] in
+            guard let self = self else { return nil }
+            return self.buildSnapshot()
+        }
+    }
     
     // MARK: - Propiedades Computadas de Progreso
     var currentStep: RecipeStep? {
@@ -90,6 +118,30 @@ final class CookingTimerEngine {
         return closestNotice
     }
     
+    // MARK: - Snapshot de Estado (Ecosistema Watch & Widgets)
+    
+    public func buildSnapshot() -> CookingSessionSnapshot {
+        guard let recipe = activeRecipe, let step = currentStep else {
+            return .idle
+        }
+        
+        return CookingSessionSnapshot(
+            recipeTitle: recipe.title,
+            recipeEmoji: recipe.iconEmoji,
+            stepTitle: step.title,
+            stepInstruction: step.instructions,
+            stepIndex: currentStepIndex,
+            totalSteps: recipe.steps.count,
+            remainingSeconds: remainingStepSeconds,
+            stepDurationSeconds: step.durationSeconds,
+            isPaused: sessionState == .paused,
+            isCompleted: sessionState == .completed,
+            isWaitingConfirmation: sessionState == .waitingForManualAction,
+            intervalNotice: currentIntervalNotice,
+            nextStepTitle: nextStep?.title
+        )
+    }
+    
     // MARK: - Acciones Públicas del Motor
     
     func startCooking(recipe: Recipe) {
@@ -113,6 +165,7 @@ final class CookingTimerEngine {
         }
         
         startTimer()
+        syncExternalDisplays()
     }
     
     func pause() {
@@ -120,13 +173,13 @@ final class CookingTimerEngine {
         internalTimer?.invalidate()
         internalTimer = nil
         sessionState = .paused
-        syncLiveActivity()
+        syncExternalDisplays()
     }
     
     func resume() {
         guard sessionState == .paused else { return }
         startTimer()
-        syncLiveActivity()
+        syncExternalDisplays()
     }
     
     func skipToNextStep() {
@@ -140,7 +193,7 @@ final class CookingTimerEngine {
     
     func dismissIntervalAlert() {
         currentIntervalNotice = nil
-        syncLiveActivity()
+        syncExternalDisplays()
     }
     
     func stopSession() {
@@ -156,6 +209,7 @@ final class CookingTimerEngine {
         
         LiveActivityManager.shared.endActivity(immediate: true)
         NotificationService.shared.cancelAllNotifications()
+        WatchConnectivityService.shared.sendSnapshot(.idle)
     }
     
     // MARK: - Lógica Interna de Ticks y Fases
@@ -178,7 +232,7 @@ final class CookingTimerEngine {
             sessionState = .running
         }
         
-        syncLiveActivity()
+        syncExternalDisplays()
     }
     
     private func startTimer() {
@@ -186,7 +240,7 @@ final class CookingTimerEngine {
         sessionState = .running
         
         internalTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            Task { @MainActor in
+            Task { @MainActor [weak self] in
                 self?.handleTimerTick()
             }
         }
@@ -205,8 +259,8 @@ final class CookingTimerEngine {
         // Comprobar alertas de intervalo anidadas
         checkIntervalAlerts()
         
-        // Sincronizar Live Activity
-        syncLiveActivity()
+        // Sincronizar Live Activity y Apple Watch
+        syncExternalDisplays()
         
         // Comprobar si el paso ha terminado
         if remainingStepSeconds <= 0 {
@@ -219,7 +273,7 @@ final class CookingTimerEngine {
                     internalTimer?.invalidate()
                     internalTimer = nil
                     sessionState = .waitingForManualAction
-                    syncLiveActivity()
+                    syncExternalDisplays()
                 } else {
                     triggerStepEndSound()
                     advanceStep()
@@ -261,11 +315,14 @@ final class CookingTimerEngine {
         sessionState = .completed
         triggerRecipeCompletedSound()
         LiveActivityManager.shared.endActivity(immediate: false)
+        syncExternalDisplays()
     }
     
-    private func syncLiveActivity() {
+    /// Sincroniza el estado en todas las pantallas secundarias (Live Activity, Dynamic Island y Apple Watch)
+    private func syncExternalDisplays() {
         guard let step = currentStep else { return }
         
+        // 1. Live Activity & Dynamic Island
         LiveActivityManager.shared.updateActivity(
             step: step,
             stepIndex: currentStepIndex,
@@ -275,6 +332,9 @@ final class CookingTimerEngine {
             intervalNotice: currentIntervalNotice,
             nextStep: nextStep
         )
+        
+        // 2. Apple Watch Companion
+        WatchConnectivityService.shared.sendSnapshot(buildSnapshot())
     }
     
     // MARK: - Efectos Hápticos y Sonoros
