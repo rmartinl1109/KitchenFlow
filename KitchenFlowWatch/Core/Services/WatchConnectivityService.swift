@@ -38,26 +38,19 @@ public final class WatchConnectivityService: NSObject, ObservableObject {
         self.latestSnapshot = snapshot
         guard let session = session, session.activationState == .activated else { return }
         
-        #if os(iOS)
-        self.isWatchAppInstalled = session.isWatchAppInstalled
-        guard session.isWatchAppInstalled else { return }
-        #endif
-        
         do {
             let data = try JSONEncoder().encode(snapshot)
             let message: [String: Any] = ["snapshot": data]
             
-            // 1. Contexto de aplicación persistente de fondo
-            try session.updateApplicationContext(message)
-            
-            // 2. Si el Watch está accesible en directo, enviar de inmediato
             if session.isReachable {
                 session.sendMessage(message, replyHandler: nil) { error in
                     #if DEBUG
-                    print("[WatchConnectivity] Error enviando mensaje en tiempo real: \(error.localizedDescription)")
+                    print("[WatchConnectivity] Error sendMessage en tiempo real: \(error.localizedDescription)")
                     #endif
                 }
             }
+            
+            try? session.updateApplicationContext(message)
         } catch {
             #if DEBUG
             print("[WatchConnectivity] Fallo al codificar CookingSessionSnapshot: \(error)")
@@ -74,17 +67,11 @@ public final class WatchConnectivityService: NSObject, ObservableObject {
         let message: [String: Any] = ["command": command.rawValue]
         
         if session.isReachable {
-            session.sendMessage(message, replyHandler: { reply in
-                if let data = reply["snapshot"] as? Data,
-                   let snapshot = try? JSONDecoder().decode(CookingSessionSnapshot.self, from: data) {
-                    Task { @MainActor in
-                        self.latestSnapshot = snapshot
-                    }
-                }
-            }) { error in
+            session.sendMessage(message, replyHandler: nil) { error in
                 #if DEBUG
                 print("[WatchConnectivity] Error al enviar comando \(command): \(error.localizedDescription)")
                 #endif
+                session.transferUserInfo(message)
             }
         } else {
             session.transferUserInfo(message)
@@ -106,6 +93,14 @@ extension WatchConnectivityService: WCSessionDelegate {
             self.isWatchAppInstalled = session.isWatchAppInstalled
             #endif
             self.isReachable = session.isReachable
+            
+            #if os(iOS)
+            if self.latestSnapshot.isActive {
+                self.sendSnapshot(self.latestSnapshot)
+            }
+            #elseif os(watchOS)
+            self.requestSyncFromPhone()
+            #endif
         }
     }
     
@@ -120,6 +115,9 @@ extension WatchConnectivityService: WCSessionDelegate {
         Task { @MainActor in
             self.isWatchAppInstalled = session.isWatchAppInstalled
             self.isReachable = session.isReachable
+            if self.isReachable && self.latestSnapshot.isActive {
+                self.sendSnapshot(self.latestSnapshot)
+            }
         }
     }
     #endif
@@ -127,6 +125,16 @@ extension WatchConnectivityService: WCSessionDelegate {
     public nonisolated func sessionReachabilityDidChange(_ session: WCSession) {
         Task { @MainActor in
             self.isReachable = session.isReachable
+            
+            #if os(iOS)
+            if self.isReachable && self.latestSnapshot.isActive {
+                self.sendSnapshot(self.latestSnapshot)
+            }
+            #elseif os(watchOS)
+            if self.isReachable && !self.latestSnapshot.isActive {
+                self.requestSyncFromPhone()
+            }
+            #endif
         }
     }
     
@@ -145,23 +153,10 @@ extension WatchConnectivityService: WCSessionDelegate {
     }
     
     public nonisolated func session(_ session: WCSession, didReceiveMessage message: [String: Any], replyHandler: @escaping ([String: Any]) -> Void) {
-        if let rawCommand = message["command"] as? String,
-           let command = WatchCookingCommand(rawValue: rawCommand) {
-            Task { @MainActor in
-                if command == .requestSync, let snapshot = self.onSyncRequested?() {
-                    if let data = try? JSONEncoder().encode(snapshot) {
-                        replyHandler(["snapshot": data])
-                        return
-                    }
-                }
-                self.onCommandReceived?(command)
-                replyHandler(["status": "ok"])
-            }
-        } else {
-            Task { @MainActor in
-                self.processIncomingData(message)
-                replyHandler(["status": "received"])
-            }
+        replyHandler(["status": "received"])
+        
+        Task { @MainActor in
+            self.processIncomingData(message)
         }
     }
     
@@ -181,7 +176,15 @@ extension WatchConnectivityService: WCSessionDelegate {
         
         if let rawCommand = payload["command"] as? String,
            let command = WatchCookingCommand(rawValue: rawCommand) {
-            self.onCommandReceived?(command)
+            if command == .requestSync {
+                #if os(iOS)
+                if let snapshot = self.onSyncRequested?() {
+                    self.sendSnapshot(snapshot)
+                }
+                #endif
+            } else {
+                self.onCommandReceived?(command)
+            }
         }
     }
 }
