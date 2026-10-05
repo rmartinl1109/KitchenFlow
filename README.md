@@ -28,6 +28,9 @@ Al cocinar platos elaborados con múltiples fases (por ejemplo: sofreír 5 min, 
   - **Gestor de Dependencias**: Swift Package Manager (SPM)
 
 ### 🏷️ Identificadores Oficiales de App Store
+- **Nombre en App Store**: `KitchenFlow: Recipe Timers`
+- **Nombre en Dispositivo (`CFBundleDisplayName`)**: `KitchenFlow`
+- **Nombre de registro interno**: `KitchenFlowRecipes`
 - **Bundle ID (App)**: `com.rmartinl1109.KitchenFlow`
 - **Bundle ID (Widget)**: `com.rmartinl1109.KitchenFlow.KitchenFlowWidget`
 - **Apple ID (App Store)**: `6819074326`

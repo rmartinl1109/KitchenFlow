@@ -3400,7 +3400,7 @@
       }
     },
     "recipes.list.free_limit_banner" : {
-      "comment" : "Aviso plan free\nLímite Free",
+      "comment" : "Aviso plan free",
       "localizations" : {
         "de" : {
           "stringUnit" : {

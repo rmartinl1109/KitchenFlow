@@ -1,1 +1,1 @@
-KitchenFlow: Cooking Timers
+KitchenFlow: Recipe Timers

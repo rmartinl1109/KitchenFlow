@@ -8,7 +8,9 @@ Este documento registra los identificadores oficiales del proyecto en Apple Deve
 
 | Concepto | Valor Oficial | Notas |
 | :--- | :--- | :--- |
-| **App Name** | `KitchenFlow` | Nombre en App Store |
+| **App Name (App Store)** | `KitchenFlow: Recipe Timers` | Nombre público oficial en App Store (USA / Global) |
+| **Internal App Name** | `KitchenFlowRecipes` | Nombre de registro interno en App Store Connect |
+| **Bundle Display Name** | `KitchenFlow` | Nombre visible bajo el icono en iOS / watchOS (`CFBundleDisplayName`) |
 | **Bundle Identifier (App)** | `com.rmartinl1109.KitchenFlow` | Target principal iOS / iPadOS / macOS |
 | **Bundle Identifier (Widget)** | `com.rmartinl1109.KitchenFlow.KitchenFlowWidget` | Target de Dynamic Island & Live Activities |
 | **Apple ID (App Store)** | `6819074326` | Identificador único en App Store Connect |
