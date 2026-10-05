@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Vista principal inmersiva de cocinado guiado en Apple Watch.
+/// Vista principal inmersiva de cocinado guiado en Apple Watch (Función Pro).
 struct WatchCookingView: View {
     @ObservedObject private var connectivity = WatchConnectivityService.shared
     
@@ -15,7 +15,9 @@ struct WatchCookingView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                if snapshot.isCompleted {
+                if !snapshot.isProUser && snapshot.isActive {
+                    proLockedView
+                } else if snapshot.isCompleted {
                     completedView
                 } else if snapshot.isActive {
                     activeSessionView
@@ -29,18 +31,21 @@ struct WatchCookingView: View {
                 connectivity.requestSyncFromPhone()
             }
             .onChange(of: snapshot.intervalNotice) { oldValue, newValue in
+                guard snapshot.isProUser else { return }
                 if let notice = newValue, notice != previousIntervalNotice {
                     previousIntervalNotice = notice
                     WatchHapticsManager.shared.playIntervalAlert()
                 }
             }
             .onChange(of: snapshot.stepIndex) { oldValue, newValue in
+                guard snapshot.isProUser else { return }
                 if newValue != previousStepIndex {
                     previousStepIndex = newValue
                     WatchHapticsManager.shared.playStepCompleted()
                 }
             }
             .onChange(of: snapshot.isCompleted) { oldValue, newValue in
+                guard snapshot.isProUser else { return }
                 if newValue && !hasPlayedCompletionHaptic {
                     hasPlayedCompletionHaptic = true
                     WatchHapticsManager.shared.playRecipeCompleted()
@@ -51,7 +56,55 @@ struct WatchCookingView: View {
         }
     }
     
-    // MARK: - Estado: Sesión Activa
+    // MARK: - Estado: Función Exclusiva Pro
+    
+    private var proLockedView: some View {
+        VStack(spacing: 8) {
+            ZStack {
+                Circle()
+                    .fill(KitchenColors.primaryGradient())
+                    .frame(width: 44, height: 44)
+                
+                Image(systemName: "crown.fill")
+                    .font(.title3)
+                    .foregroundStyle(.white)
+            }
+            .padding(.top, 2)
+            
+            Text("watch.pro.title")
+                .font(.headline)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)
+            
+            Text("watch.pro.subtitle")
+                .font(.system(size: 11))
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 4)
+            
+            HStack(spacing: 4) {
+                Image(systemName: "iphone.radiowaves.left.and.right")
+                    .font(.caption2)
+                Text("watch.pro.unlock_hint")
+                    .font(.system(size: 10, weight: .semibold))
+            }
+            .foregroundStyle(KitchenColors.saffron)
+            .padding(.top, 4)
+            
+            Button {
+                WatchHapticsManager.shared.playButtonFeedback()
+                connectivity.requestSyncFromPhone()
+            } label: {
+                Label("watch.action.refresh_sync", systemImage: "arrow.clockwise")
+                    .font(.system(size: 10))
+            }
+            .buttonStyle(.bordered)
+            .padding(.top, 4)
+        }
+        .padding(6)
+    }
+    
+    // MARK: - Estado: Sesión Activa (Pro)
     
     private var activeSessionView: some View {
         VStack(spacing: 8) {

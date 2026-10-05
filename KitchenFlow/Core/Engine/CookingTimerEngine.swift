@@ -138,7 +138,8 @@ final class CookingTimerEngine {
             isCompleted: sessionState == .completed,
             isWaitingConfirmation: sessionState == .waitingForManualAction,
             intervalNotice: currentIntervalNotice,
-            nextStepTitle: nextStep?.title
+            nextStepTitle: nextStep?.title,
+            isProUser: StoreKitManager.shared.isProUser
         )
     }
     

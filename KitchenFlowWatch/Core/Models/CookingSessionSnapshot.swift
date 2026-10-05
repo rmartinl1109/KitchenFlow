@@ -15,6 +15,7 @@ public struct CookingSessionSnapshot: Codable, Sendable, Equatable {
     public let isWaitingConfirmation: Bool
     public let intervalNotice: String?
     public let nextStepTitle: String?
+    public let isProUser: Bool
     public let timestamp: Date
     
     public init(
@@ -31,6 +32,7 @@ public struct CookingSessionSnapshot: Codable, Sendable, Equatable {
         isWaitingConfirmation: Bool,
         intervalNotice: String? = nil,
         nextStepTitle: String? = nil,
+        isProUser: Bool = false,
         timestamp: Date = Date()
     ) {
         self.recipeTitle = recipeTitle
@@ -46,6 +48,7 @@ public struct CookingSessionSnapshot: Codable, Sendable, Equatable {
         self.isWaitingConfirmation = isWaitingConfirmation
         self.intervalNotice = intervalNotice
         self.nextStepTitle = nextStepTitle
+        self.isProUser = isProUser
         self.timestamp = timestamp
     }
     
@@ -78,7 +81,8 @@ public struct CookingSessionSnapshot: Codable, Sendable, Equatable {
             isCompleted: false,
             isWaitingConfirmation: false,
             intervalNotice: nil,
-            nextStepTitle: nil
+            nextStepTitle: nil,
+            isProUser: false
         )
     }
     
