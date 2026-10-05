@@ -7,20 +7,20 @@ final class SampleDataService {
     static func createSampleRecipe() -> Recipe {
         let step1 = RecipeStep(
             stepOrder: 1,
-            title: "Calentar caldo de verduras",
-            instructions: "Poner el caldo en una cazuela a fuego medio-bajo para mantenerlo siempre caliente al incorporarlo.",
+            title: "Warm Vegetable Broth",
+            instructions: "Keep the broth warm in a pot over low heat so it incorporates easily into the risotto.",
             durationSeconds: 180,
             requiresManualConfirmation: false
         )
         
         let step2Alert = StepIntervalAlert(
             intervalSeconds: 60,
-            message: "Remover el sofrito para evitar que la cebolla se dore demasiado"
+            message: "Gently stir aromatics to prevent browning"
         )
         let step2 = RecipeStep(
             stepOrder: 2,
-            title: "Pochar cebolla y setas",
-            instructions: "En una sartén amplia con aceite de oliva y mantequilla, pochar la chalota picada y las setas laminadas.",
+            title: "Sauté Shallots & Mushrooms",
+            instructions: "In a wide pan with olive oil and butter, gently sauté the finely chopped shallots and sliced mushrooms.",
             durationSeconds: 240,
             requiresManualConfirmation: true,
             intervalAlerts: [step2Alert]
@@ -28,28 +28,28 @@ final class SampleDataService {
         
         let step3 = RecipeStep(
             stepOrder: 3,
-            title: "Nacarar el arroz y verter vino blanco",
-            instructions: "Añadir el arroz arborio, remover 1 minuto y verter el vino blanco hasta que evapore el alcohol.",
+            title: "Toast Rice & Deglaze with Wine",
+            instructions: "Add arborio rice, stir for 1 minute until translucent around the edges, then pour white wine until evaporated.",
             durationSeconds: 120,
             requiresManualConfirmation: true
         )
         
         let step4Alert = StepIntervalAlert(
             intervalSeconds: 90,
-            message: "Remover suavemente y añadir otro cazo de caldo caliente"
+            message: "Stir gently and add another ladle of warm broth"
         )
         let step4 = RecipeStep(
             stepOrder: 4,
-            title: "Cocción lenta y mantecado",
-            instructions: "Añadir caldo poco a poco sin dejar de remover. Al final añadir queso parmesano y mantecar con mantequilla.",
+            title: "Simmer & Mantecatura",
+            instructions: "Gradually add warm broth ladle by ladle while stirring. Finish off the heat with grated parmesan and butter.",
             durationSeconds: 600,
             requiresManualConfirmation: false,
             intervalAlerts: [step4Alert]
         )
         
         let recipe = Recipe(
-            title: "Risotto de Setas al Parmesano",
-            recipeDescription: "Guion de tiempos preciso para conseguir la textura cremosa perfecta del auténtico risotto italiano.",
+            title: "Parmesan Mushroom Risotto",
+            recipeDescription: "Precise timer guide to achieve the authentic creamy texture of classic Italian risotto.",
             iconEmoji: "🍲",
             isDefaultSample: true,
             steps: [step1, step2, step3, step4]

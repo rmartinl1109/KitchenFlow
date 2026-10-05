@@ -152,7 +152,9 @@ final class CookingTimerEngine {
         self.totalElapsedSeconds = 0
         self.currentIntervalNotice = nil
         
-        NotificationService.shared.requestAuthorization()
+        if !ProcessInfo.processInfo.arguments.contains("-screen-active-cooking") {
+            NotificationService.shared.requestAuthorization()
+        }
         
         loadStep(at: 0)
         

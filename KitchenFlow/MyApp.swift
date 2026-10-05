@@ -4,6 +4,7 @@ import SwiftData
 @main
 struct MyApp: App {
     @AppStorage("appAppearance") private var appAppearance: String = "system"
+    @AppStorage("appLanguage") private var appLanguage: String = "system"
     
     let container: ModelContainer
     
@@ -47,10 +48,19 @@ struct MyApp: App {
         }
     }
     
+    private var selectedLocale: Locale {
+        if appLanguage == "system" {
+            return Locale.autoupdatingCurrent
+        } else {
+            return Locale(identifier: appLanguage)
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .preferredColorScheme(selectedColorScheme)
+                .environment(\.locale, selectedLocale)
         }
         .modelContainer(container)
     }

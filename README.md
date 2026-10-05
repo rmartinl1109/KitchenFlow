@@ -125,7 +125,7 @@ KitchenFlow/
   - Temporizadores anidados y repetitivos para acciones intermedias (ej. remover sofrito).
   - Alertas hápticas y sonoras (`UIImpactFeedbackGenerator`, `AudioServicesPlaySystemSound`).
 - [x] Creador y editor dinámico de recetas (`RecipeEditorView`) con configuración de pasos e intervalos anidados.
-- [x] Pantalla principal (`RecipeListView`) con receta precargada de demostración (*Risotto de Setas*) y control de límite de 1 receta en modo gratuito.
+- [x] Pantalla principal (`RecipeListView`) con receta precargada de demostración (*Parmesan Mushroom Risotto*) y control de límite de 1 receta en modo gratuito.
 - [x] Pantalla inmersiva de cocinado activo (`ActiveCookingView`) con anillo circular de progreso dinámico y banner de avisos de intervalo.
 - [x] Actualización de la Landing Page interactiva en `/web` con simulador navegable de la app.
 
@@ -185,11 +185,26 @@ KitchenFlow cumple estrictamente la política de **cero cadenas hardcodeadas**. 
 - `pt`: Português
 - `zh-Hans`: 简体中文
 
+Además, la aplicación respeta por defecto el idioma configurado en el sistema del dispositivo, pero permite al usuario **anularlo o cambiarlo manualmente en cualquier momento** desde la pantalla de Ajustes ([SettingsView.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Features/Settings/SettingsView.swift)) con propagación reactiva en tiempo real sin reiniciar la app.
+
 ---
 
 ## 📝 Historial de Actualizaciones Recientes
 
+- **2026-10-06**:
+  - **Selector de Idioma Dinámico en Ajustes (In-App Language Switcher)**:
+    - **Comportamiento híbrido**: Por defecto se adapta de forma 100% transparente al idioma del dispositivo del usuario (`settings.language.system`). Si el usuario lo prefiere, puede seleccionar manualmente cualquiera de los 6 idiomas oficiales (`en`, `es`, `fr`, `de`, `pt`, `zh-Hans`) directamente desde [SettingsView.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Features/Settings/SettingsView.swift).
+    - **Reactividad instantánea**: Integrada la clave `@AppStorage("appLanguage")` e inyectada la variable de entorno `.environment(\.locale, selectedLocale)` en la raíz de [MyApp.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/MyApp.swift) y en [SettingsView.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Features/Settings/SettingsView.swift), permitiendo el cambio de idioma en caliente sin necesidad de reiniciar la app.
+    - **Acceso directo a Ajustes de iOS**: Añadido botón contextual para abrir la configuración nativa de la app en iOS (`UIApplication.openSettingsURLString`).
+    - **Ampliación de String Catalogs**: Incorporadas y traducidas 10 nuevas claves semánticas en los 6 idiomas tanto en [KitchenFlow/Resources/Localizable.xcstrings](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Resources/Localizable.xcstrings) como en [KitchenFlowWatch/Resources/Localizable.xcstrings](file:///Users/roberto/Developer/KitchenFlow/KitchenFlowWatch/Resources/Localizable.xcstrings).
+    - **Compilación verificada**: Targets de iOS y watchOS validados y compilados sin advertencias.
+
 - **2026-10-05**:
+  - **Generación y Validación de la Suite Oficial de Screenshots para App Store Connect**:
+    - **iPhone 6.9" (`1320 x 2868 px`)**: Generadas las capturas oficiales para la App Store en [AppStore/screenshots/iPhone-6.9/](file:///Users/roberto/Developer/KitchenFlow/AppStore/screenshots/iPhone-6.9/) cubriendo cocinado activo inmersivo con anillo circular y avisos de intervalo, editor visual de guiones de tiempo, ficha detallada de receta, catálogo de recetas y paywall de membresía Pro.
+    - **iPad Pro 13" (`2064 x 2752 px`)**: Generada la suite completa para iPadOS en [AppStore/screenshots/iPad-13/](file:///Users/roberto/Developer/KitchenFlow/AppStore/screenshots/iPad-13/) cumpliendo con exactitud la resolución pixel-perfect requerida por App Store Connect.
+    - **Apple Watch Ultra (`422 x 514 px`)**: Capturas de la companion app nativa en [AppStore/screenshots/AppleWatch/](file:///Users/roberto/Developer/KitchenFlow/AppStore/screenshots/AppleWatch/) mostrando el temporizador circular háptico y avisos de cocina en la muñeca.
+    - **Enrutamiento automatizado para capturas**: Implementado soporte de launch arguments (`-screen-active-cooking`, `-screen-editor`, `-screen-detail`, `-screen-paywall`, `-screen-settings`, `-screen-watch-active`) tanto en iOS como en watchOS.
   - **Sincronización multi-dispositivo con SwiftData CloudKit**:
     - **Blindaje del esquema de modelos**: [RecipeModels.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Core/Models/RecipeModels.swift) adaptado a los requisitos estrictos de CloudKit con valores por defecto en todas las propiedades y relaciones inversas explícitas (`inverse: \RecipeStep.recipe`, `inverse: \StepIntervalAlert.step`).
     - **Contenedor SwiftData resiliente con fallback**: En [MyApp.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/MyApp.swift), inicialización de `ModelContainer` con `cloudKitDatabase: .automatic` para sincronización silenciosa entre dispositivos del usuario mediante iCloud privada, con captura y fallback automático a almacenamiento local (`.none`) en caso de entornos sin red o cuentas restringidas.
@@ -252,6 +267,6 @@ KitchenFlow cumple estrictamente la política de **cero cadenas hardcodeadas**. 
     - Modelos de datos en SwiftData: [RecipeModels.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Core/Models/RecipeModels.swift) (`Recipe`, `RecipeStep`, `StepIntervalAlert`).
     - Configurado catálogo de cadenas oficial [Localizable.xcstrings](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Resources/Localizable.xcstrings) en los 6 idiomas obligatorios (cero cadenas hardcodeadas).
     - Implementadas las vistas principales: [RecipeListView.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Features/RecipeList/RecipeListView.swift), [RecipeEditorView.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Features/RecipeEditor/RecipeEditorView.swift) y [ActiveCookingView.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Features/ActiveSession/ActiveCookingView.swift).
-    - Creación de receta de muestra inicial demostrativa (*Risotto de Setas*) vía [SampleDataService.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Core/Services/SampleDataService.swift).
+    - Creación de receta de muestra inicial demostrativa (*Parmesan Mushroom Risotto*) vía [SampleDataService.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Core/Services/SampleDataService.swift).
     - Actualización del escaparate web interactivo en `/web` ([index.html](file:///Users/roberto/Developer/KitchenFlow/web/index.html) y [app.js](file:///Users/roberto/Developer/KitchenFlow/web/app.js)) con simulador funcional de la app.
     - Compilación nativa validada con éxito en simuladores de iOS y iPadOS.

@@ -293,6 +293,34 @@ struct RecipeListView: View {
     }
     
     private func seedInitialSampleIfNeeded() {
+        // Migración: si la receta de muestra inicial se guardó previamente en español, actualizarla al inglés por defecto
+        for recipe in recipes where recipe.isDefaultSample {
+            if recipe.title != "Parmesan Mushroom Risotto" {
+                recipe.title = "Parmesan Mushroom Risotto"
+                recipe.recipeDescription = "Precise timer guide to achieve the authentic creamy texture of classic Italian risotto."
+                if recipe.steps.count >= 4 {
+                    recipe.steps[0].title = "Warm Vegetable Broth"
+                    recipe.steps[0].instructions = "Keep the broth warm in a pot over low heat so it incorporates easily into the risotto."
+                    
+                    recipe.steps[1].title = "Sauté Shallots & Mushrooms"
+                    recipe.steps[1].instructions = "In a wide pan with olive oil and butter, gently sauté the finely chopped shallots and sliced mushrooms."
+                    if let alert = recipe.steps[1].intervalAlerts.first {
+                        alert.message = "Gently stir aromatics to prevent browning"
+                    }
+                    
+                    recipe.steps[2].title = "Toast Rice & Deglaze with Wine"
+                    recipe.steps[2].instructions = "Add arborio rice, stir for 1 minute until translucent around the edges, then pour white wine until evaporated."
+                    
+                    recipe.steps[3].title = "Simmer & Mantecatura"
+                    recipe.steps[3].instructions = "Gradually add warm broth ladle by ladle while stirring. Finish off the heat with grated parmesan and butter."
+                    if let alert = recipe.steps[3].intervalAlerts.first {
+                        alert.message = "Stir gently and add another ladle of warm broth"
+                    }
+                }
+                try? modelContext.save()
+            }
+        }
+        
         if !hasSeededInitialSample && recipes.isEmpty {
             let sample = SampleDataService.createSampleRecipe()
             modelContext.insert(sample)

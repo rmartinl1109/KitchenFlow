@@ -15,6 +15,10 @@ final class NotificationService {
     
     /// Solicita permisos de notificación al usuario
     func requestAuthorization() {
+        if ProcessInfo.processInfo.arguments.contains("-screenshot-mode") ||
+           ProcessInfo.processInfo.arguments.contains("-screen-active-cooking") {
+            return
+        }
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if let error = error {
                 print("Error requesting notification authorization: \(error)")

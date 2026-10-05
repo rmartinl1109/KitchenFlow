@@ -4893,6 +4893,896 @@
           }
         }
       }
+    },
+    "sample.recipe.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parmesan Mushroom Risotto"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Risotto de Setas al Parmesano"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Risotto aux Champignons et Parmesan"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parmesan-Pilz-Risotto"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Risoto de Cogumelos com Parmesão"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "帕玛森蘑菇烩饭"
+          }
+        }
+      }
+    },
+    "sample.recipe.description": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Precise timer guide to achieve the authentic creamy texture of classic Italian risotto."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guion de tiempos preciso para conseguir la textura cremosa perfecta del auténtico risotto italiano."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guide de minuterie précis pour obtenir la texture crémeuse parfaite de l'authentique risotto italien."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Präziser Timer-Ablauf für die perfekte sämige Konsistenz eines echten italienischen Risottos."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guia de tempo preciso para obter a textura cremosa perfeita do autêntico risoto italiano."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "精确的分步计时器指南，助您做出纯正意式浓郁奶油烩饭。"
+          }
+        }
+      }
+    },
+    "sample.recipe.step1.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Warm Vegetable Broth"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calentar caldo de verduras"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chauffer le bouillon de légumes"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gemüsebrühe erwärmen"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aquecer caldo de legumes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加热蔬菜高汤"
+          }
+        }
+      }
+    },
+    "sample.recipe.step1.instructions": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep the broth warm in a pot over low heat so it incorporates easily into the risotto."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poner el caldo en una cazuela a fuego medio-bajo para mantenerlo siempre caliente al incorporarlo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maintenir le bouillon au chaud à feu doux afin de l'incorporer progressivement."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Brühe bei schwacher Hitze warmhalten, damit sie leicht eingearbeitet werden kann."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantenha o caldo aquecido em fogo baixo para facilitar a incorporação ao risoto."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用小火保持高汤温热，以便随时分次加入烩饭。"
+          }
+        }
+      }
+    },
+    "sample.recipe.step2.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sauté Shallots & Mushrooms"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pochar cebolla y setas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Faire revenir échalotes et champignons"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schalotten und Pilze anschwitzen"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refogar chalotas e cogumelos"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "煸炒红葱头与蘑菇"
+          }
+        }
+      }
+    },
+    "sample.recipe.step2.instructions": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In a wide pan with olive oil and butter, gently sauté the finely chopped shallots and sliced mushrooms."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En una sartén amplia con aceite de oliva y mantequilla, pochar la chalota picada y las setas laminadas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dans une grande poêle avec de l'huile d'olive et du beurre, faire suer l'échalote et les champignons émincés."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In einer großen Pfanne mit Olivenöl und Butter die gehackten Schalotten und Pilzscheiben anschwitzen."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Em uma frigideira ampla com azeite e manteiga, refogue as chalotas picadas e os cogumelos fatiados."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在宽口平底锅中加入橄榄油和黄油，轻轻煸炒切碎的红葱头和切片蘑菇。"
+          }
+        }
+      }
+    },
+    "sample.recipe.step2.alert": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gently stir aromatics to prevent browning"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remover el sofrito para evitar que la cebolla se dore demasiado"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remuer doucement pour éviter que les oignons ne colorent trop"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sanft umrühren, damit die Schalotten nicht zu dunkel werden"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mexer suavemente para não dourar demais a cebola"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "轻轻翻炒，防止红葱头焦糊"
+          }
+        }
+      }
+    },
+    "sample.recipe.step3.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toast Rice & Deglaze with Wine"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nacarar el arroz y verter vino blanco"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nacrer le riz et déglacer au vin blanc"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reis glasig dünsten und mit Weißwein ablöschen"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tostar o arroz e verter vinho branco"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "翻炒意米并加入白葡萄酒"
+          }
+        }
+      }
+    },
+    "sample.recipe.step3.instructions": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add arborio rice, stir for 1 minute until translucent around the edges, then pour white wine until evaporated."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Añadir el arroz arborio, remover 1 minuto y verter el vino blanco hasta que evapore el alcohol."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajouter le riz arborio, remuer 1 minute puis verser le vin blanc jusqu'à évaporation complète."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arborio-Reis hinzufügen, 1 Minute rühren und mit Weißwein ablöschen, bis der Alkohol verdampft ist."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicione o arroz arbóreo, mexa por 1 minuto e despeje o vinho branco até que evapore o álcool."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加入意米翻炒1分钟至米粒半透明，淋入白葡萄酒煮至酒精完全挥发。"
+          }
+        }
+      }
+    },
+    "sample.recipe.step4.title": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simmer & Mantecatura"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cocción lenta y mantecado"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuisson lente et mantecatura"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sanftes Köcheln und Mantecatura"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cozimento lento e mantecatura"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "慢火焖煮与乳化收尾"
+          }
+        }
+      }
+    },
+    "sample.recipe.step4.instructions": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gradually add warm broth ladle by ladle while stirring. Finish off the heat with grated parmesan and butter."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Añadir caldo poco a poco sin dejar de remover. Al final añadir queso parmesano y mantecar con mantequilla."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajouter le bouillon louche par louche en remuant constamment. Terminer hors du feu avec le parmesan et le beurre."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nach und nach warme Brühe schöpfkellenweise unter ständigem Rühren zugeben. Zum Schluss mit Butter und Parmesan verfeinern."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicione o caldo aos poucos mexendo sempre. Finalize fora do fogo com queijo parmesão e manteiga."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "边搅拌边逐勺加入温热的高汤。离火后加入帕玛森芝士碎和黄油翻拌乳化。"
+          }
+        }
+      }
+    },
+    "sample.recipe.step4.alert": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stir gently and add another ladle of warm broth"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remover suavemente y añadir otro cazo de caldo caliente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remuer doucement et ajouter une autre louche de bouillon chaud"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sanft umrühren und eine weitere Kelle heiße Brühe zugeben"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mexa suavemente e adicione outra concha de caldo quente"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "轻轻搅拌并再加入一勺热高汤"
+          }
+        }
+      }
+    },
+    "settings.section.language": {
+      "comment": "Título de la sección de selección de idioma",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprache"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Language"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idioma"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Langue"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idioma"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "语言"
+          }
+        }
+      }
+    },
+    "settings.section.language_footer": {
+      "comment": "Nota explicativa sobre la preferencia de idioma",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standardmäßig folgt die App der Sprache Ihres Geräts. Hier können Sie eine bestimmte Sprache auswählen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "By default, the app follows your device language. You can select a specific language here."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De forma predeterminada, la app utiliza el idioma de tu dispositivo. Puedes seleccionar otro idioma aquí."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Par défaut, l'application suit la langue de votre appareil. Vous pouvez choisir une langue spécifique ici."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por padrão, o app segue o idioma do seu dispositivo. Você pode escolher um idioma específico aqui."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "默认情况下，应用遵循您的设备语言。您可以在此处选择特定语言。"
+          }
+        }
+      }
+    },
+    "settings.language.system": {
+      "comment": "Opción de idioma predeterminado del sistema",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System (Automatisch)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System (Automatic)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistema (Automático)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Système (Automatique)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistema (Automático)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统（自动）"
+          }
+        }
+      }
+    },
+    "settings.language.option_en": {
+      "comment": "Opción de idioma inglés",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Englisch (English)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "English"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inglés (English)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anglais (English)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inglês (English)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "英语 (English)"
+          }
+        }
+      }
+    },
+    "settings.language.option_es": {
+      "comment": "Opción de idioma español",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spanisch (Español)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spanish (Español)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Español"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Espagnol (Español)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Espanhol (Español)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "西班牙语 (Español)"
+          }
+        }
+      }
+    },
+    "settings.language.option_fr": {
+      "comment": "Opción de idioma francés",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Französisch (Français)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "French (Français)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Francés (Français)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Français"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Francês (Français)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "法语 (Français)"
+          }
+        }
+      }
+    },
+    "settings.language.option_de": {
+      "comment": "Opción de idioma alemán",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deutsch"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "German (Deutsch)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alemán (Deutsch)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allemand (Deutsch)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alemão (Deutsch)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "德语 (Deutsch)"
+          }
+        }
+      }
+    },
+    "settings.language.option_pt": {
+      "comment": "Opción de idioma portugués",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portugiesisch (Português)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portuguese (Português)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portugués (Português)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portugais (Português)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Português"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "葡萄牙语 (Português)"
+          }
+        }
+      }
+    },
+    "settings.language.option_zh_hans": {
+      "comment": "Opción de idioma chino simplificado",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vereinfachtes Chinesisch (中文)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simplified Chinese (中文)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chino Simplificado (中文)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chinois Simplifié (中文)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chinês Simplificado (中文)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "简体中文"
+          }
+        }
+      }
+    },
+    "settings.language.open_system_settings": {
+      "comment": "Enlace para abrir los ajustes de la app en iOS",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In den iOS-Einstellungen öffnen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open in iOS Settings"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir en Ajustes de iOS"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir dans Réglages iOS"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir nos Ajustes do iOS"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 iOS 设置中打开"
+          }
+        }
+      }
     }
   },
   "version": "1.1"

@@ -7,9 +7,18 @@ struct SettingsView: View {
     @Environment(\.requestReview) private var requestReview
     
     @AppStorage("appAppearance") private var appAppearance: String = "system"
+    @AppStorage("appLanguage") private var appLanguage: String = "system"
     @AppStorage("keepScreenAwake") private var keepScreenAwake: Bool = true
     @AppStorage("hapticsEnabled") private var hapticsEnabled: Bool = true
     @AppStorage("soundAlertsEnabled") private var soundAlertsEnabled: Bool = true
+    
+    private var selectedLocale: Locale {
+        if appLanguage == "system" {
+            return Locale.autoupdatingCurrent
+        } else {
+            return Locale(identifier: appLanguage)
+        }
+    }
     
     private var storeKit = StoreKitManager.shared
     @State private var showingPaywall = false
@@ -19,6 +28,7 @@ struct SettingsView: View {
             List {
                 membershipSection
                 appearanceSection
+                languageSection
                 cookingPreferencesSection
                 supportSection
                 aboutAndLegalSection
@@ -26,6 +36,7 @@ struct SettingsView: View {
             .listStyle(.insetGrouped)
             .navigationTitle("settings.title")
             .navigationBarTitleDisplayMode(.inline)
+            .environment(\.locale, selectedLocale)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("common.actions.done") {
@@ -118,6 +129,52 @@ struct SettingsView: View {
             }
             .pickerStyle(.segmented)
             .padding(.vertical, 4)
+        }
+    }
+    
+    // MARK: - Sección de Idioma
+    
+    private var languageSection: some View {
+        Section {
+            Picker(selection: $appLanguage) {
+                Label("settings.language.system", systemImage: "globe")
+                    .tag("system")
+                Label("settings.language.option_en", systemImage: "character.bubble")
+                    .tag("en")
+                Label("settings.language.option_es", systemImage: "character.bubble")
+                    .tag("es")
+                Label("settings.language.option_fr", systemImage: "character.bubble")
+                    .tag("fr")
+                Label("settings.language.option_de", systemImage: "character.bubble")
+                    .tag("de")
+                Label("settings.language.option_pt", systemImage: "character.bubble")
+                    .tag("pt")
+                Label("settings.language.option_zh_hans", systemImage: "character.bubble")
+                    .tag("zh-Hans")
+            } label: {
+                Label("settings.section.language", systemImage: "globe")
+            }
+            
+            #if os(iOS)
+            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                Button {
+                    UIApplication.shared.open(settingsURL)
+                } label: {
+                    HStack {
+                        Label("settings.language.open_system_settings", systemImage: "gear")
+                            .foregroundStyle(.primary)
+                        Spacer()
+                        Image(systemName: "arrow.up.forward.app")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+            #endif
+        } header: {
+            Text("settings.section.language")
+        } footer: {
+            Text("settings.section.language_footer")
         }
     }
     
