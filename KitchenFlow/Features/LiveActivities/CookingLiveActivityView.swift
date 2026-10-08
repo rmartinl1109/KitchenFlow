@@ -123,7 +123,7 @@ struct CookingDynamicIslandViews {
         HStack(spacing: 4) {
             Text(context.attributes.recipeEmoji)
                 .font(.caption)
-            Text("P\(context.state.currentStepIndex + 1)")
+            Text(verbatim: "P\(context.state.currentStepIndex + 1)")
                 .font(.caption2.weight(.bold))
                 .foregroundStyle(KitchenColors.saffron)
         }

@@ -189,9 +189,71 @@ Además, la aplicación respeta por defecto el idioma configurado en el sistema 
 
 ---
 
+## 🧪 Protocolo de Pruebas, Control de Calidad y Despliegue Beta
+
+Para garantizar la máxima estabilidad, rendimiento y ausencia de errores antes de la publicación definitiva en App Store Connect, el proyecto define un protocolo estandarizado de auditoría y distribución previa:
+
+### 1. Auditoría y Testing Automatizado Asistido
+Antes de empaquetar la versión final para distribución, se puede ejecutar una batería completa de validaciones:
+- **Compilación Estricta y Detección de Warnings**: Compilación analítica con `xcodebuild` para identificar advertencias, APIs obsoletas o posibles inconsistencias de concurrencia en Swift 6.
+- **Suite de Pruebas Unitarias y de Integración**: Ejecución de tests automatizados (`xcodebuild test`) orientados a asegurar la robustez de los modelos de datos, la persistencia en SwiftData y la precisión del motor de temporizadores (`CookingTimerEngine`).
+- **Auditoría de Localización (6 idiomas)**: Comprobación estricta de **cero cadenas hardcodeadas** en la interfaz SwiftUI y verificación de integridad semántica en los catálogos [Localizable.xcstrings](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Resources/Localizable.xcstrings) para los 6 idiomas oficiales (`en`, `es`, `fr`, `de`, `pt`, `zh-Hans`).
+- **Validación de Casos Límite y Flujos Críticos**: Revisión del comportamiento de persistencia local y sincronización CloudKit, control estricto del límite gratuito (1 receta propia), estados vacíos (*empty states*), notificaciones locales interactivas y ciclo de vida de Live Activities y sincronización con Apple Watch.
+
+### 2. Pruebas en Dispositivos Físicos antes del Lanzamiento
+
+#### Opción A: Distribución Beta con TestFlight (Recomendada)
+Permite probar la aplicación en condiciones idénticas a la App Store y compartirla con colaboradores sin cables:
+- **Pruebas Internas (*Internal Testing*)**:
+  - Hasta 100 evaluadores que pertenezcan al equipo en App Store Connect.
+  - **Disponibilidad inmediata**: no requiere pasar por la revisión de Apple (*Beta App Review*).
+- **Pruebas Externas (*External Testing*)**:
+  - Hasta 10.000 evaluadores mediante invitación por correo electrónico o mediante **Enlace Público** (*Public Link*).
+  - La primera compilación de una versión pasa por una revisión rápida por parte de Apple (generalmente pocas horas).
+- **Características operativas en TestFlight**:
+  - Cada compilación tiene una validez de **90 días**.
+  - Notificaciones automáticas de actualización ante nuevas compilaciones.
+  - Recolección automática de informes de fallo (*crash reports*) y capturas de pantalla con comentarios directos de los usuarios.
+  - Compras dentro de la app (StoreKit) simuladas en entorno de pruebas (*Sandbox*), sin cargos reales.
+  - **Transición a la versión final de la App Store**: Al publicarse la app, la versión oficial sustituye a la de TestFlight sin pérdida de datos locales (comparten el mismo `Bundle Identifier`). Se recomienda expirar la compilación (*Expire Build*) en App Store Connect tras el lanzamiento oficial.
+
+#### Opción B: Instalación Directa desde Xcode (Cable o Wi-Fi)
+Para pruebas inmediatas en el dispositivo del desarrollador:
+1. Activar el **Modo de desarrollador** en el iPhone/iPad (*Ajustes > Privacidad y seguridad > Modo de desarrollador*).
+2. Conectar el dispositivo físico al Mac por cable o emparejarlo por Wi-Fi.
+3. Seleccionar el dispositivo como destino en la barra de esquemas de Xcode y presionar `Cmd + R` (*Run*).
+4. **Vigencia del perfil de aprovisionamiento**:
+   - Con cuenta gratuita de Apple ID: el certificado expira a los **7 días** (requiere reinstalar/recompilar).
+   - Con membresía de Apple Developer Program: válido hasta **1 año**.
+
+---
+
 ## 📝 Historial de Actualizaciones Recientes
 
 - **2026-10-06**:
+  - **Incrustación de Companion App para Apple Watch en Bundle de iOS (`Build 2`)**:
+    - **Solución al empaquetado de TestFlight**: Configurada la fase de compilación `Embed Watch Content` (`PBXCopyFilesBuildPhase` con destino en `Watch/`) y la dependencia de destino `PBXTargetDependency` en el target principal `KitchenFlow`.
+    - **Validación de binarios embebidos**: Xcode ahora compila automáticamente `KitchenFlowWatch.app` y lo empaqueta dentro de `KitchenFlow.app/Watch/` junto al widget en `PlugIns/`, permitiendo a App Store Connect y TestFlight reconocer la app de Apple Watch (`Apple Watch: Sí`).
+    - **Incremento de versión de compilación**: Actualizado `CURRENT_PROJECT_VERSION = 2` en todos los targets para permitir la subida inmediata de la nueva compilación a TestFlight.
+  - **Actualización de Versión Oficial (`1.26.1006`)**:
+    - Sincronizado `MARKETING_VERSION = 1.26.1006` en todos los targets del proyecto Xcode: aplicación principal (`KitchenFlow`), extensión de Dynamic Island y Live Activities (`KitchenFlowWidget`) y companion app de Apple Watch (`KitchenFlowWatch`).
+    - Actualizadas las notas de lanzamiento (`release_notes.txt`) en los 6 idiomas oficiales en [AppStore/metadata/](file:///Users/roberto/Developer/KitchenFlow/AppStore/metadata/).
+    - La vista de Ajustes ([SettingsView.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Features/Settings/SettingsView.swift)) refleja automáticamente la nueva versión en tiempo de ejecución (`1.26.1006 (Build 1)`).
+  - **Ejecución y Superación del Control de Calidad Pre-Lanzamiento (QA Pre-Release)**:
+    - **Compilación estricta en Release**: Compilación limpia en Xcode de los targets principales (`KitchenFlow` para iOS y `KitchenFlowWatch` para watchOS) con 0 errores y 0 advertencias de concurrencia o deprecación.
+    - **Auditoría Integral de Localización (6 Idiomas)**:
+      - 100% de paridad en traducciones completadas en [KitchenFlow/Resources/Localizable.xcstrings](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Resources/Localizable.xcstrings) y [KitchenFlowWatch/Resources/Localizable.xcstrings](file:///Users/roberto/Developer/KitchenFlow/KitchenFlowWatch/Resources/Localizable.xcstrings) para `en`, `es`, `fr`, `de`, `pt` y `zh-Hans`.
+      - Eliminación total de cadenas hardcodeadas en vistas SwiftUI ([RecipeListView.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Features/RecipeList/RecipeListView.swift), [RecipeDetailView.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Features/RecipeDetail/RecipeDetailView.swift), [RecipeEditorView.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Features/RecipeEditor/RecipeEditorView.swift), [PaywallView.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Features/Settings/PaywallView.swift), [SettingsView.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Features/Settings/SettingsView.swift), [CookingComplications.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlowWatch/Complications/CookingComplications.swift)).
+      - Uso de `Text(verbatim:)` para elementos no traducibles (insignias "PRO", "KF", emojis de presentación y números de versión dinámicos obtenidos de `CFBundleShortVersionString` y `CFBundleVersion`).
+    - **Suite de Tests Automatizados al 100%**:
+      - 17/17 tests unitarios y de integración superados con éxito: persistencia en contenedor SwiftData en memoria, relaciones en cascada, transiciones del motor secuencial `CookingTimerEngine`, alertas anidadas de intervalo, y validación estricta de la regla freemium (límite de 1 receta en plan gratuito).
+    - **Auditoría de Activos y Flujos Críticos**:
+      - Iconos de aplicación validados con `sips` (1024x1024 px exactos y `hasAlpha: no`).
+      - Páginas legales de privacidad y términos verificadas en `/web` ([privacy.html](file:///Users/roberto/Developer/KitchenFlow/web/privacy.html) y [terms.html](file:///Users/roberto/Developer/KitchenFlow/web/terms.html)).
+      - Despliegue, lanzamiento y verificación visual satisfactoria en simulador de iPhone 18 Pro Max.
+  - **Protocolo de Pruebas y Despliegue Beta Documentado**:
+    - Incorporada en el [README.md](file:///Users/roberto/Developer/KitchenFlow/README.md) la guía de auditoría pre-lanzamiento (compilación estricta, tests unitarios, auditoría de localización en 6 idiomas y verificación de flujos críticos).
+    - Detallado el flujo de despliegue y pruebas en dispositivos reales mediante **TestFlight** (pruebas internas y externas, enlaces públicos, retención de datos locales y transición a producción) e **instalación directa vía Xcode**.
   - **Selector de Idioma Dinámico en Ajustes (In-App Language Switcher)**:
     - **Comportamiento híbrido**: Por defecto se adapta de forma 100% transparente al idioma del dispositivo del usuario (`settings.language.system`). Si el usuario lo prefiere, puede seleccionar manualmente cualquiera de los 6 idiomas oficiales (`en`, `es`, `fr`, `de`, `pt`, `zh-Hans`) directamente desde [SettingsView.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Features/Settings/SettingsView.swift).
     - **Reactividad instantánea**: Integrada la clave `@AppStorage("appLanguage")` e inyectada la variable de entorno `.environment(\.locale, selectedLocale)` en la raíz de [MyApp.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/MyApp.swift) y en [SettingsView.swift](file:///Users/roberto/Developer/KitchenFlow/KitchenFlow/Features/Settings/SettingsView.swift), permitiendo el cambio de idioma en caliente sin necesidad de reiniciar la app.

@@ -64,11 +64,19 @@ final class StoreKitManager {
         defer { isLoading = false }
         
         do {
+            print("🛒 [StoreKit] Solicitando productos para: \(KitchenFlowProductID.allProductIDs)...")
             let loadedProducts = try await Product.products(for: KitchenFlowProductID.allProductIDs)
             self.products = loadedProducts.sorted(by: { $0.price < $1.price })
+            print("🛒 [StoreKit] Productos recibidos (\(loadedProducts.count)):")
+            for prod in loadedProducts {
+                print("   ✅ [StoreKit] Producto cargado: \(prod.id) - \(prod.displayName) (\(prod.displayPrice))")
+            }
+            if loadedProducts.isEmpty {
+                print("   ⚠️ [StoreKit] La lista de productos vino VACÍA (0 productos).")
+            }
         } catch {
             self.errorMessage = error.localizedDescription
-            print("StoreKit load products error: \(error.localizedDescription)")
+            print("❌ [StoreKit] Error cargando productos: \(error.localizedDescription)")
         }
     }
     

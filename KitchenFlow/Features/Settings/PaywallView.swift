@@ -9,6 +9,8 @@ struct PaywallView: View {
     
     @State private var restoreAlertMessage: String?
     @State private var showingRestoreAlert = false
+    @State private var purchaseErrorMessage: String?
+    @State private var showingErrorAlert = false
     
     var body: some View {
         NavigationStack {
@@ -38,6 +40,12 @@ struct PaywallView: View {
             .alert(
                 restoreAlertMessage ?? "",
                 isPresented: $showingRestoreAlert
+            ) {
+                Button("common.actions.done", role: .cancel) { }
+            }
+            .alert(
+                purchaseErrorMessage ?? "",
+                isPresented: $showingErrorAlert
             ) {
                 Button("common.actions.done", role: .cancel) { }
             }
@@ -198,7 +206,7 @@ struct PaywallView: View {
                         .tint(.white)
                 } else {
                     Image(systemName: "sparkles")
-                    Text("\(String(localized: "paywall.unlock_button", comment: "Desbloquear")) (\(priceString))")
+                    Text(verbatim: "\(String(localized: "paywall.unlock_button", comment: "Desbloquear")) (\(priceString))")
                 }
             }
             .font(.headline)
@@ -233,7 +241,7 @@ struct PaywallView: View {
                         .underline()
                 }
                 
-                Text("•")
+                Text(verbatim: "•")
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
                 
@@ -258,7 +266,13 @@ struct PaywallView: View {
                     let success = await storeKit.purchase(reloaded)
                     if success {
                         dismiss()
+                    } else if let err = storeKit.errorMessage {
+                        purchaseErrorMessage = err
+                        showingErrorAlert = true
                     }
+                } else {
+                    purchaseErrorMessage = storeKit.errorMessage ?? String(localized: "paywall.error.product_unavailable")
+                    showingErrorAlert = true
                 }
             }
             return
@@ -268,6 +282,9 @@ struct PaywallView: View {
             let success = await storeKit.purchase(product)
             if success {
                 dismiss()
+            } else if let err = storeKit.errorMessage {
+                purchaseErrorMessage = err
+                showingErrorAlert = true
             }
         }
     }

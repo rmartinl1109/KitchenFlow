@@ -87,7 +87,7 @@ struct SettingsView: View {
                         }
                         
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("KitchenFlow Pro")
+                            Text("paywall.title")
                                 .font(.headline)
                             
                             Text("paywall.subtitle")
@@ -307,7 +307,7 @@ struct SettingsView: View {
                 Text("settings.version")
                     .foregroundStyle(.primary)
                 Spacer()
-                Text("1.0 (Build 1)")
+                Text(verbatim: "\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0") (Build \(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"))")
                     .foregroundStyle(.secondary)
             }
         }

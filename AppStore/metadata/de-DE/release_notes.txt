@@ -1,4 +1,4 @@
-Willkommen bei KitchenFlow 1.0!
+Willkommen bei KitchenFlow 1.26.1006!
 • Verkettete Phasen-Timer für komplexe Gourmet-Rezepte.
 • Eingebettete Intervall-Alarme zum Umrühren und Wenden.
 • Live Activities und Dynamic Island Unterstützung.

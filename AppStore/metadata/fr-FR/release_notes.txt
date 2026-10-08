@@ -1,4 +1,4 @@
-Bienvenue sur KitchenFlow 1.0 !
+Bienvenue sur KitchenFlow 1.26.1006 !
 • Minuteurs enchaînés par étapes pour recettes complexes.
 • Alertes d'intervalles imbriquées pour remuer ou retourner.
 • Support des Live Activities et de la Dynamic Island.

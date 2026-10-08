@@ -112,7 +112,7 @@ struct CookingComplicationView: View {
                 Gauge(value: 0.0) {
                     Image(systemName: "timer")
                 } currentValueLabel: {
-                    Text("KF")
+                    Text(verbatim: "KF")
                         .font(.system(size: 10, weight: .bold))
                 }
                 .gaugeStyle(.accessoryCircularCapacity)
@@ -127,12 +127,12 @@ struct CookingComplicationView: View {
             Text(snapshot.formattedRemainingTime)
                 .font(.system(size: 12, weight: .bold, design: .rounded))
                 .widgetLabel {
-                    Text("\(snapshot.recipeEmoji) \(snapshot.stepTitle)")
+                    Text(verbatim: "\(snapshot.recipeEmoji) \(snapshot.stepTitle)")
                 }
         } else {
-            Text("KitchenFlow")
+            Text(verbatim: "KitchenFlow")
                 .widgetLabel {
-                    Text("🍳 Listo")
+                    Text("complication.idle_label")
                 }
         }
     }
@@ -167,7 +167,7 @@ struct CookingComplicationView: View {
                 HStack(spacing: 4) {
                     Image(systemName: "frying.pan.fill")
                         .foregroundStyle(KitchenColors.saffron)
-                    Text("KitchenFlow")
+                    Text(verbatim: "KitchenFlow")
                         .font(.caption2)
                         .fontWeight(.bold)
                 }
@@ -181,9 +181,9 @@ struct CookingComplicationView: View {
     // MARK: - Inline (Texto lineal superior)
     private var inlineView: some View {
         if snapshot.isActive {
-            Text("\(snapshot.recipeEmoji) \(snapshot.formattedRemainingTime) · \(snapshot.stepTitle)")
+            Text(verbatim: "\(snapshot.recipeEmoji) \(snapshot.formattedRemainingTime) · \(snapshot.stepTitle)")
         } else {
-            Text("KitchenFlow 🍳")
+            Text(verbatim: "KitchenFlow 🍳")
         }
     }
 }

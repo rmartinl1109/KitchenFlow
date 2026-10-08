@@ -117,7 +117,7 @@ struct WatchCookingView: View {
                     .fontWeight(.semibold)
                     .lineLimit(1)
                 Spacer()
-                Text("\(snapshot.stepIndex + 1)/\(snapshot.totalSteps)")
+                Text(verbatim: "\(snapshot.stepIndex + 1)/\(snapshot.totalSteps)")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
@@ -233,7 +233,7 @@ struct WatchCookingView: View {
     
     private var completedView: some View {
         VStack(spacing: 8) {
-            Text("🎉")
+            Text(verbatim: "🎉")
                 .font(.system(size: 40))
             
             Text("watch.completed.title")

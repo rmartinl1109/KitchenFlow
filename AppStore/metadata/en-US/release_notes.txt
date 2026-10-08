@@ -1,4 +1,4 @@
-Welcome to KitchenFlow 1.0!
+Welcome to KitchenFlow 1.26.1006!
 • Chained recipe phase timers with automated transitions.
 • Nested interval alerts to stir, flip, or baste mid-cooking.
 • Real-time Live Activities and Dynamic Island support.

@@ -86,7 +86,7 @@ struct RecipeDetailView: View {
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(KitchenColors.saffron)
                 
-                Label("\(recipe.steps.count) fases", systemImage: "list.number")
+                Label(String(format: NSLocalizedString("%lld fases", comment: "Número de fases"), recipe.steps.count), systemImage: "list.number")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(.secondary)
             }
@@ -116,7 +116,7 @@ struct RecipeDetailView: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 HStack(spacing: 8) {
-                    Text("\(step.stepOrder)")
+                    Text(verbatim: "\(step.stepOrder)")
                         .font(.caption.weight(.bold))
                         .foregroundStyle(.white)
                         .frame(width: 24, height: 24)

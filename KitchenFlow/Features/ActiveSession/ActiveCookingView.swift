@@ -168,7 +168,7 @@ struct ActiveCookingView: View {
                 HStack(spacing: 6) {
                     Image(systemName: "timer")
                         .foregroundStyle(KitchenColors.saffron)
-                    Text("\(nextAlert.message) (\(nextAlert.secondsRemaining)s)")
+                    Text(verbatim: "\(nextAlert.message) (\(nextAlert.secondsRemaining)s)")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
@@ -275,7 +275,7 @@ struct ActiveCookingView: View {
         VStack(spacing: 24) {
             Spacer()
             
-            Text("👨‍🍳")
+            Text(verbatim: "👨‍🍳")
                 .font(.system(size: 90))
                 .scaleEffect(1.1)
                 .animation(.spring(bounce: 0.5), value: engine.sessionState)

@@ -15,3 +15,6 @@ Este archivo define las directrices generales que el agente debe seguir en este 
   - Los skills con procedimientos paso a paso se encuentran en [`.agents/skills/`](.agents/skills/).
     - [update-web-showcase](.agents/skills/update-web-showcase/SKILL.md): Procedimiento guiado para sincronizar funcionalidades de la aplicación en `/web`.
     - [app-store-prep](.agents/skills/app-store-prep/SKILL.md): Preparación y validación de metadatos ASO (6 idiomas), AppIcon y screenshots para App Store Connect.
+    - [pre-release-qa](.agents/skills/pre-release-qa/SKILL.md): Control de calidad integral, testing automatizado y despliegue beta en TestFlight o dispositivos físicos.
+    - [feedback-triage](.agents/skills/feedback-triage/SKILL.md): Triaje, resolución iterativa de feedback con capturas y limpieza de imágenes tras validación.
+

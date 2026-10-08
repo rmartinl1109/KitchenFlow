@@ -1,4 +1,4 @@
-¡Bienvenido a KitchenFlow 1.0!
+¡Bienvenido a KitchenFlow 1.26.1006!
 • Temporizadores encadenados por fases para recetas complejas.
 • Avisos de intervalo anidados para remover, hidratar o dar la vuelta.
 • Soporte completo de Live Activities y Dynamic Island en iOS.

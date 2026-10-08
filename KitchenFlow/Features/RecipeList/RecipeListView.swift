@@ -56,7 +56,7 @@ struct RecipeListView: View {
                         } label: {
                             HStack(spacing: 4) {
                                 Image(systemName: "crown.fill")
-                                Text("PRO")
+                                Text(verbatim: "PRO")
                             }
                             .font(.footnote.weight(.bold))
                             .padding(.horizontal, 10)
@@ -214,7 +214,7 @@ struct RecipeListView: View {
                     .font(.caption.weight(.medium))
                     .foregroundStyle(.secondary)
                 
-                Label("\(recipe.steps.count) fases", systemImage: "list.number")
+                Label(String(format: NSLocalizedString("%lld fases", comment: "Número de fases"), recipe.steps.count), systemImage: "list.number")
                     .font(.caption.weight(.medium))
                     .foregroundStyle(.secondary)
                 

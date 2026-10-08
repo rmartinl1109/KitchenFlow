@@ -1,4 +1,4 @@
-Bem-vindo ao KitchenFlow 1.0!
+Bem-vindo ao KitchenFlow 1.26.1006!
 • Timers encadeados por etapas para receitas gastronômicas.
 • Alertas de intervalo aninhados para mexer ou regar alimentos.
 • Suporte a Live Activities e Dynamic Island no iOS.

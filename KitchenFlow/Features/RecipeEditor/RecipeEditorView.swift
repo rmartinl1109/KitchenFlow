@@ -97,8 +97,8 @@ struct RecipeEditorView: View {
                                 .font(.headline)
                             
                             HStack(spacing: 12) {
-                                Stepper("\(step.minutes) min", value: $step.minutes, in: 0...180)
-                                Stepper("\(step.seconds) seg", value: $step.seconds, in: 0...59)
+                                Stepper(String(format: NSLocalizedString("%lld min", comment: "Minutos"), step.minutes), value: $step.minutes, in: 0...180)
+                                Stepper(String(format: NSLocalizedString("%lld seg", comment: "Segundos"), step.seconds), value: $step.seconds, in: 0...59)
                             }
                             .font(.subheadline)
                             
@@ -117,7 +117,7 @@ struct RecipeEditorView: View {
                                             Image(systemName: "bell.fill")
                                                 .font(.caption2)
                                                 .foregroundStyle(KitchenColors.flameOrange)
-                                            Text("\(alert.message) (\(alert.intervalSeconds)s)")
+                                            Text(verbatim: "\(alert.message) (\(alert.intervalSeconds)s)")
                                                 .font(.caption)
                                         }
                                     }
